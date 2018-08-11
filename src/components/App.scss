@@ -1,13 +1,15 @@
 .app {
+  font-family: 'AvenirNextLTPro-Medium';
   text-align: center;
 
-  .appHeader {
+  &Header {
     background-color: #222;
     height: 150px;
     padding: 20px;
     color: white;
+    margin-bottom: 15px;
 
-    .appLogo {
+    &Logo {
       animation: appLogoSpin infinite 20s linear;
       height: 80px;
 
@@ -17,12 +19,12 @@
       }
     }
 
-    .appTitle {
+    &Title {
       font-size: 1.5em;
     }
   }
 
-  .appIntro {
+  &Intro {
     font-size: large;
   }
 }
