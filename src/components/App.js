@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Alert, Button } from 'react-bootstrap';
+import { Grid, Col, Row } from 'react-bootstrap';
 
 import NavigationBar from './NavigationBar/NavigationBar'
 
@@ -9,22 +9,26 @@ import './App.scss';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className='app' >
+
         <NavigationBar />
 
-        <div className='app'>
-          <header className='appHeader' >
-            <h1 className='appHeaderTitle' >Welcome to React</h1>
-          </header>
-          <p className='appIntro' >
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-          <Alert bsStyle="danger">
-            <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
-            good.
-          </Alert>
-          <Button bsStyle="primary">Primary</Button>
+        <div className='img1 backgroundImage' >
+          <div className='backgroundContent'>
+            <span className='backgroundBox' >
+              LAUTARO AGUIRRE
+            </span>
+          </div>
         </div>
+
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={12} md={12}>
+
+            </Col>
+          </Row>
+        </Grid>
+
       </div>
     );
   }
