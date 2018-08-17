@@ -4,6 +4,7 @@
 body {
     background-color: lighten($light-grey, 10%);
     font-family: 'AvenirNextLTPro-Medium';
+    color: $opacity-grey;
     margin: 0;
     padding: 0;
 }

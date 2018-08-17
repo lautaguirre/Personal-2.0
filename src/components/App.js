@@ -1,33 +1,24 @@
 import React, { Component } from 'react';
 
-import { Grid, Col, Row } from 'react-bootstrap';
-
-import NavigationBar from './NavigationBar/NavigationBar'
+import NavigationBar from './NavigationBar/NavigationBar';
+import BackgroundImage from './BackgroundImage/BackgroundImage';
+import AboutSection from './AboutSection/AboutSection';
 
 import './App.scss';
 
 class App extends Component {
   render() {
+
+    let name = 'Lautaro Aguirre';
+
     return (
       <div className='app' >
 
         <NavigationBar />
 
-        <div className='img1 backgroundImage' >
-          <div className='backgroundContent'>
-            <span className='backgroundBox' >
-              LAUTARO AGUIRRE
-            </span>
-          </div>
-        </div>
+        <BackgroundImage image={'mainImage'} showBox boxText={name} />
 
-        <Grid>
-          <Row className="show-grid">
-            <Col xs={12} md={12}>
-
-            </Col>
-          </Row>
-        </Grid>
+        <AboutSection />
 
       </div>
     );
