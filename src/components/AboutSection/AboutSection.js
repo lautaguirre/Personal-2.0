@@ -6,11 +6,11 @@ import avatar from '../../assets/images/avatar.png';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faGraduationCap, faBriefcase } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard, faGraduationCap, faBriefcase } from '@fortawesome/free-solid-svg-icons'
 
 import './AboutSection.scss';
 
-library.add(faUserCircle,faGraduationCap, faBriefcase);
+library.add(faAddressCard, faGraduationCap, faBriefcase);
 
 class AboutSection extends Component {
   render() {
@@ -21,7 +21,7 @@ class AboutSection extends Component {
           <Row className="show-grid">
             <Col xs={6} xsOffset={3} >
               <div className='center'>
-                <h3>ABOUT</h3>
+                <h2>About</h2>
               </div>
             </Col>
           </Row>
@@ -35,16 +35,18 @@ class AboutSection extends Component {
           </Row>
 
           <Row className="show-grid center">
-            <Col xs={9} >
+            <Col xs={12} >
               <ListGroup className='shadow'>
 
                 <ListGroupItem>
                     <Row className="show-grid center">
-                      <Col xs={2} className='hideOnTablet' >
-                        <FontAwesomeIcon icon={faUserCircle} size="5x" />
-                      </Col>
+                      <div className='hideOnMobile' >
+                        <Col xs={2} className='center' >
+                          <FontAwesomeIcon icon={faAddressCard} size="5x" />
+                        </Col>
+                      </div>
                       <Col xs={10} >
-                        <h3>Personal information </h3>
+                        <h4>Personal information </h4>
                         <hr />
                         <ul>
                           <li><strong>Name:</strong> Lautaro Nahuel</li>
@@ -57,11 +59,13 @@ class AboutSection extends Component {
 
                 <ListGroupItem>
                     <Row className="show-grid center">
-                      <Col xs={2} className='hideOnTablet' >
-                        <FontAwesomeIcon icon={faGraduationCap} size="5x"  />
-                      </Col>
+                      <div className='hideOnMobile' >
+                        <Col xs={2} className='center' >
+                            <FontAwesomeIcon icon={faGraduationCap} size="5x" />
+                        </Col>
+                      </div>
                       <Col xs={10} >
-                        <h3>Education</h3>
+                        <h4>Education</h4>
                         <hr />
                         <ul>
                           <li>
@@ -80,11 +84,13 @@ class AboutSection extends Component {
 
                 <ListGroupItem>
                     <Row className="show-grid center">
-                      <Col xs={2} className='hideOnTablet' >
-                        <FontAwesomeIcon icon={faBriefcase} size="5x"  />
-                      </Col>
+                      <div className='hideOnMobile' >
+                        <Col xs={2} className='center' >
+                            <FontAwesomeIcon icon={faBriefcase} size="5x"  />
+                        </Col>
+                      </div>
                       <Col xs={10} >
-                      <h3>Work experience</h3>
+                      <h4>Work experience</h4>
                         <hr />
                         <ul>
                           <li>

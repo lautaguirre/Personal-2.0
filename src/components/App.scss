@@ -1,4 +1,16 @@
+@import '../assets/styles/colors.scss';
+
 .app {
+  color: $darker-grey;
+
+  h2 {
+    color: $opacity-grey;
+  }
+
+  h3 {
+    color: $opacity-grey;
+  }
+
   .center {
     display: flex;
     justify-content: center;

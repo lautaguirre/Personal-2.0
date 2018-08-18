@@ -1,15 +1,14 @@
 @import '../../assets/styles/colors.scss';
 
 .about {
-  color: $darker-grey;
 
-  h3 {
-    margin-top: 0px;
-    margin-bottom: 0px;
+  h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   hr {
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
 
@@ -41,8 +40,8 @@
     }
   }
 
-  .hideOnTablet {
-    @media screen and (max-width: $break-tablet) {
+  .hideOnMobile {
+    @media screen and (max-width: $break-mobile-large) {
       display: none;
     }
   }

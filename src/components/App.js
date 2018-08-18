@@ -4,6 +4,7 @@ import NavigationBar from './NavigationBar/NavigationBar';
 import BackgroundImage from './BackgroundImage/BackgroundImage';
 import AboutSection from './AboutSection/AboutSection';
 import LanguagesSection from './LanguagesSection/LanguagesSection';
+import ProgrammingSection from './ProgramingSection/ProgrammingSection';
 
 import './App.scss';
 
@@ -22,6 +23,8 @@ class App extends Component {
         <AboutSection />
 
         <LanguagesSection />
+
+        <ProgrammingSection />
 
       </div>
     );
