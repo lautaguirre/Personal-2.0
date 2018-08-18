@@ -27,8 +27,8 @@ class AboutSection extends Component {
           </Row>
 
           <Row className="show-grid">
-            <Col xs={2} xsOffset={5} >
-              <div className='aboutHeader center' >
+            <Col xs={2} xsOffset={5} className='aboutHeader' >
+              <div className='center' >
                 <Image className='shadow' src={avatar} circle responsive />
               </div>
             </Col>
@@ -39,28 +39,26 @@ class AboutSection extends Component {
               <ListGroup className='shadow'>
 
                 <ListGroupItem>
-                  <Grid>
                     <Row className="show-grid center">
-                      <Col xs={2} >
-                        <FontAwesomeIcon icon={faUserCircle} size="6x" />
+                      <Col xs={2} className='hideOnTablet' >
+                        <FontAwesomeIcon icon={faUserCircle} size="5x" />
                       </Col>
                       <Col xs={10} >
                         <h3>Personal information </h3>
                         <hr />
                         <ul>
                           <li><strong>Name:</strong> Lautaro Nahuel</li>
+                          <hr />
                           <li><strong>Lastname:</strong> Aguirre</li>
                         </ul>
                       </Col>
                     </Row>
-                  </Grid>
                 </ListGroupItem>
 
                 <ListGroupItem>
-                  <Grid>
                     <Row className="show-grid center">
-                      <Col xs={2} >
-                        <FontAwesomeIcon icon={faGraduationCap} size="6x"  />
+                      <Col xs={2} className='hideOnTablet' >
+                        <FontAwesomeIcon icon={faGraduationCap} size="5x"  />
                       </Col>
                       <Col xs={10} >
                         <h3>Education</h3>
@@ -70,6 +68,7 @@ class AboutSection extends Component {
                             <strong>Higschool:</strong>  San Juan Bautista de La Salle Institute
                             (Economics and Management of Organizations)
                           </li>
+                          <hr />
                           <li>
                             <strong>College:</strong> Attending studies in Business Administration
                             at Rosario's National University.
@@ -77,20 +76,32 @@ class AboutSection extends Component {
                         </ul>
                       </Col>
                     </Row>
-                  </Grid>
                 </ListGroupItem>
 
                 <ListGroupItem>
-                  <Grid>
                     <Row className="show-grid center">
-                      <Col xs={2} >
-                        <FontAwesomeIcon icon={faBriefcase} size="6x"  />
+                      <Col xs={2} className='hideOnTablet' >
+                        <FontAwesomeIcon icon={faBriefcase} size="5x"  />
                       </Col>
                       <Col xs={10} >
-                        lorem ipsum
+                      <h3>Work experience</h3>
+                        <hr />
+                        <ul>
+                          <li>
+                            Employee at <strong>“Park City Mountain Resort”</strong> located in Utah, United States for 5 months.
+                            Occupied positions as cashier, busser, bartender and barista.
+                          </li>
+                          <hr />
+                          <li>
+                            Season employee at <strong>“Falabella Retail”</strong> at Rosario, Santa Fe, Argentina.
+                          </li>
+                          <hr />
+                          <li>
+                            My own freelance projects, which you can see at the <a href='#portfolio' ><u>PORTFOLIO</u></a> section.
+                          </li>
+                        </ul>
                       </Col>
                     </Row>
-                  </Grid>
                 </ListGroupItem>
 
               </ListGroup>

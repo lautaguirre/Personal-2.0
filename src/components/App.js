@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import NavigationBar from './NavigationBar/NavigationBar';
 import BackgroundImage from './BackgroundImage/BackgroundImage';
 import AboutSection from './AboutSection/AboutSection';
+import LanguagesSection from './LanguagesSection/LanguagesSection';
 
 import './App.scss';
 
@@ -19,6 +20,8 @@ class App extends Component {
         <BackgroundImage image={'mainImage'} showBox boxText={name} />
 
         <AboutSection />
+
+        <LanguagesSection />
 
       </div>
     );

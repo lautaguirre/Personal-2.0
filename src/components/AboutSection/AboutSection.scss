@@ -1,10 +1,29 @@
 @import '../../assets/styles/colors.scss';
 
 .about {
+  color: $darker-grey;
+
+  h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 
   hr {
-    margin-bottom: 5px;
     margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .list-group {
+    border-radius: 10px;
+
+    .list-group-item:first-child {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .list-group-item:last-child {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
   }
 
   .aboutHeader {
@@ -18,6 +37,12 @@
       max-height: 95px;
     }
     @media screen and (max-width: $break-mobile-large) {
+      display: none;
+    }
+  }
+
+  .hideOnTablet {
+    @media screen and (max-width: $break-tablet) {
       display: none;
     }
   }
