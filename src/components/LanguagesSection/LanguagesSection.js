@@ -32,11 +32,11 @@ class LanguagesSection extends Component {
           <Row className="show-grid center">
             <Col xs={12} >
               <h3>Spanish &nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; Native</h3>
-              <ProgressBar now={spanish} label={`${spanish}%`} />
+              <ProgressBar now={spanish} label={`${spanish}%`} className='shadow' />
               <h3>English &nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; First Certificate English</h3>
-              <ProgressBar now={english} label={`${english}%`} />
+              <ProgressBar now={english} label={`${english}%`} className='shadow' />
               <h3>Portuguese &nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; 2 years living in Brazil</h3>
-              <ProgressBar now={portuguese} label={`${portuguese}%`} />
+              <ProgressBar now={portuguese} label={`${portuguese}%`} className='shadow' />
             </Col>
           </Row>
 

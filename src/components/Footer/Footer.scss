@@ -1,0 +1,20 @@
+@import '../../assets/styles/colors.scss';
+
+.footer {
+  color: white;
+  background-color: $darker-grey;
+  height: 15vh;
+
+  a {
+    color: white;
+    background-color: black;
+    border-radius: 50%;
+    padding: 8px 16px;
+    height: 45px;
+    width: 45px;
+
+    :hover {
+      background-color: $opacity-grey;
+    }
+  }
+}

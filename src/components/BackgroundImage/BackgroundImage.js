@@ -11,7 +11,7 @@ class App extends Component {
       </span> : '' ;
 
     return (
-      <div className={`${this.props.image} backgroundImage`} >
+      <div className={`${this.props.image} backgroundImage`} id={this.props.sectionName} >
         <div className='backgroundContent shadow'>
           {box}
         </div>

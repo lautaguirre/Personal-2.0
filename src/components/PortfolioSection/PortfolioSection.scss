@@ -1,0 +1,14 @@
+@import '../../assets/styles/colors.scss';
+
+.portfolio {
+  margin-bottom: 50px;
+
+  p, li {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .h4 {
+    background-color: $darker-grey;
+  }
+}

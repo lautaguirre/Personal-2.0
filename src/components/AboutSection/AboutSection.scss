@@ -39,10 +39,4 @@
       display: none;
     }
   }
-
-  .hideOnMobile {
-    @media screen and (max-width: $break-mobile-large) {
-      display: none;
-    }
-  }
 }

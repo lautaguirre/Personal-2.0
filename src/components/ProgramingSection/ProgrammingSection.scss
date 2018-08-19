@@ -1,3 +1,24 @@
-.programming {
+@import '../../assets/styles/colors.scss';
 
+.programming {
+  color: $opacity-grey;
+
+  .text-center {
+    margin-right: 17px
+  }
+
+  .center {
+    margin-bottom: 15px;
+  }
+
+  h4 {
+    @media screen and (max-width: $break-mobile-large) {
+      display: none;
+    }
+  }
+
+  img {
+    max-width: 70px;
+    max-height: 70px;
+  }
 }

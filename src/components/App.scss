@@ -11,6 +11,12 @@
     color: $opacity-grey;
   }
 
+  .hideOnMobile {
+    @media screen and (max-width: $break-mobile-large) {
+      display: none;
+    }
+  }
+
   .center {
     display: flex;
     justify-content: center;

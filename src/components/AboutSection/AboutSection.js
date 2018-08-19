@@ -39,12 +39,10 @@ class AboutSection extends Component {
               <ListGroup className='shadow'>
 
                 <ListGroupItem>
-                    <Row className="show-grid center">
-                      <div className='hideOnMobile' >
-                        <Col xs={2} className='center' >
-                          <FontAwesomeIcon icon={faAddressCard} size="5x" />
-                        </Col>
-                      </div>
+                    <Row className="show-grid ">
+                      <Col xs={2} className='center' xsHidden={true} >
+                        <FontAwesomeIcon icon={faAddressCard} size="5x" />
+                      </Col>
                       <Col xs={10} >
                         <h4>Personal information </h4>
                         <hr />
@@ -58,12 +56,10 @@ class AboutSection extends Component {
                 </ListGroupItem>
 
                 <ListGroupItem>
-                    <Row className="show-grid center">
-                      <div className='hideOnMobile' >
-                        <Col xs={2} className='center' >
-                            <FontAwesomeIcon icon={faGraduationCap} size="5x" />
-                        </Col>
-                      </div>
+                    <Row className="show-grid">
+                      <Col xs={2} className='center' xsHidden={true} >
+                          <FontAwesomeIcon icon={faGraduationCap} size="5x" />
+                      </Col>
                       <Col xs={10} >
                         <h4>Education</h4>
                         <hr />
@@ -83,14 +79,12 @@ class AboutSection extends Component {
                 </ListGroupItem>
 
                 <ListGroupItem>
-                    <Row className="show-grid center">
-                      <div className='hideOnMobile' >
-                        <Col xs={2} className='center' >
-                            <FontAwesomeIcon icon={faBriefcase} size="5x"  />
-                        </Col>
-                      </div>
+                    <Row className="show-grid">
+                      <Col xs={2} className='center' xsHidden={true} >
+                          <FontAwesomeIcon icon={faBriefcase} size="5x"  />
+                      </Col>
                       <Col xs={10} >
-                      <h4>Work experience</h4>
+                        <h4>Work experience</h4>
                         <hr />
                         <ul>
                           <li>

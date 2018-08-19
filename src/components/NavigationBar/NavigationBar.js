@@ -12,8 +12,6 @@ library.add(faHome, faUser, faImages, faEnvelope);
 class NavigationBar extends Component {
   render() {
     return (
-      <div id='home'>
-
         <Navbar collapseOnSelect fixedTop >
 
           <Navbar.Header>
@@ -46,8 +44,6 @@ class NavigationBar extends Component {
           </Navbar.Collapse>
 
         </Navbar>
-
-      </div>
     );
   }
 }
