@@ -18,28 +18,24 @@ class AboutSection extends Component {
       <Grid>
         <div id='about' className='about'>
 
-          <Row className="show-grid">
-            <Col xs={6} xsOffset={3} >
-              <div className='center'>
-                <h2>About</h2>
-              </div>
+          <Row >
+            <Col xs={12} className='center' >
+              <h2>About</h2>
             </Col>
           </Row>
 
-          <Row className="show-grid">
-            <Col xs={2} xsOffset={5} className='aboutHeader' >
-              <div className='center' >
-                <Image className='shadow' src={avatar} circle responsive />
-              </div>
+          <Row >
+            <Col xs={12} xsHidden={true} className='center aboutHeader' >
+              <Image width={165} height={165} className='shadow' src={avatar} circle responsive />
             </Col>
           </Row>
 
-          <Row className="show-grid center">
+          <Row >
             <Col xs={12} >
               <ListGroup className='shadow'>
 
                 <ListGroupItem>
-                    <Row className="show-grid ">
+                    <Row>
                       <Col xs={2} className='center' xsHidden={true} >
                         <FontAwesomeIcon icon={faAddressCard} size="5x" />
                       </Col>
@@ -56,7 +52,7 @@ class AboutSection extends Component {
                 </ListGroupItem>
 
                 <ListGroupItem>
-                    <Row className="show-grid">
+                    <Row >
                       <Col xs={2} className='center' xsHidden={true} >
                           <FontAwesomeIcon icon={faGraduationCap} size="5x" />
                       </Col>
@@ -79,7 +75,7 @@ class AboutSection extends Component {
                 </ListGroupItem>
 
                 <ListGroupItem>
-                    <Row className="show-grid">
+                    <Row >
                       <Col xs={2} className='center' xsHidden={true} >
                           <FontAwesomeIcon icon={faBriefcase} size="5x"  />
                       </Col>

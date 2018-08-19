@@ -21,21 +21,19 @@ class LanguagesSection extends Component {
       <Grid>
         <div id='languages' className='languages' >
 
-          <Row className="show-grid">
+          <Row>
             <Col xs={12} className='center' >
-              <div >
                 <h2>Languages &nbsp;<FontAwesomeIcon icon={faComments} /></h2>
-              </div>
             </Col>
           </Row>
 
-          <Row className="show-grid center">
+          <Row className="center">
             <Col xs={12} >
-              <h3>Spanish &nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; Native</h3>
+              <h3>Spanish <span className='hideOnMobile' >&nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; Native</span></h3>
               <ProgressBar now={spanish} label={`${spanish}%`} className='shadow' />
-              <h3>English &nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; First Certificate English</h3>
+              <h3>English <span className='hideOnMobile' >&nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; First Certificate English</span></h3>
               <ProgressBar now={english} label={`${english}%`} className='shadow' />
-              <h3>Portuguese &nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; 2 years living in Brazil</h3>
+              <h3>Portuguese <span className='hideOnMobile' >&nbsp;<FontAwesomeIcon icon={faChevronCircleRight} />&nbsp; 2 years living in Brazil</span></h3>
               <ProgressBar now={portuguese} label={`${portuguese}%`} className='shadow' />
             </Col>
           </Row>

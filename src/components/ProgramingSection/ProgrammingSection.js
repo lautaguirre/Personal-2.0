@@ -22,7 +22,7 @@ class ProgrammingSection extends Component {
       <Grid>
         <div id='programming' className='programming' >
 
-          <Row className="show-grid">
+          <Row >
             <Col xs={12} className='center' >
               <div >
                 <h2>Programming Languages</h2>
@@ -30,70 +30,60 @@ class ProgrammingSection extends Component {
             </Col>
           </Row>
 
-          <Row className="show-grid center">
-            <Col xs={2} className='text-center' >
+          <Row >
+            <Col xs={3} className='center' >
               <FontAwesomeIcon icon={faHtml5} size='5x' />
               <h4>HTML5</h4>
             </Col>
-            <Col xs={2} className='text-center' >
+            <Col xs={3} className='center' >
               <FontAwesomeIcon icon={faCss3Alt} size='5x' />
               <h4>CSS3</h4>
             </Col>
-            <Col xs={2} className='text-center' >
+            <Col xs={3} className='center' >
               <FontAwesomeIcon icon={faJs} size='5x' />
               <h4>Javascript</h4>
             </Col>
-            <Col xs={2} className='text-center' >
+            <Col xs={3} className='center' >
               <FontAwesomeIcon icon={faPhp} size='5x' />
-              <h4>PHP</h4>
+              <h4 >PHP</h4>
             </Col>
           </Row>
 
-          <Row className="show-grid center">
+          <Row >
             <Col xs={12} className='center' >
-              <div >
                 <h2>Frameworks and Tools</h2>
-              </div>
             </Col>
           </Row>
 
-          <Row className="show-grid center">
-            <Col xs={2} className='text-center' >
-              <div className='center' >
-                <Image src={jsonSvg} responsive />
-              </div>
+          <Row >
+            <Col xs={3} className='center' >
+              <Image src={jsonSvg} responsive />
               <h4>JSON</h4>
             </Col>
-            <Col xs={2} className='text-center' >
+            <Col xs={3} className='center' >
               <FontAwesomeIcon icon={faSyncAlt} size='5x' />
               <h4>AJAX</h4>
             </Col>
-            <Col xs={2} className='text-center' >
+            <Col xs={3} className='center' >
               <FontAwesomeIcon icon={faCodeBranch} size='5x' />
               <h4>Git</h4>
             </Col>
-            <Col xs={2} className='text-center' >
-              <div className='center' >
-                <Image src={bootstrapSvg} responsive />
-              </div>
+            <Col xs={3} className='center' >
+              <Image src={bootstrapSvg} responsive />
               <h4>Bootstrap</h4>
             </Col>
           </Row>
-          <Row className="show-grid center">
-            <Col xs={2} className='text-center' >
-              <div className='center' >
-                <Image src={mySqlSvg} responsive />
-              </div>
-              <h4>MySQL</h4>
+          <Row >
+            <Col xs={4} className='center' >
+              <Image src={mySqlSvg} responsive />
+              <h4 >MySQL</h4>
             </Col>
-            <Col xs={3} className='text-center' >
+            <Col xs={4} className='center' >
               <FontAwesomeIcon icon={faReact} size='5x' />
               <h4>ReactJs</h4>
             </Col>
-            <Col xs={2} className='text-center' >
-              <div className='center' >
-                <Image src={jquerySvg} responsive />
-              </div>
+            <Col xs={4} className='center' >
+              <Image src={jquerySvg} responsive />
               <h4>JQuery</h4>
             </Col>
           </Row>

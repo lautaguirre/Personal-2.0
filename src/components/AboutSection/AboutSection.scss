@@ -26,17 +26,6 @@
   }
 
   .aboutHeader {
-    max-height: 165px;
     margin-bottom: 30px;
-
-    @media screen and (max-width: $break-desktop-minimum) {
-      max-height: 130px;
-    }
-    @media screen and (max-width: $break-tablet) {
-      max-height: 95px;
-    }
-    @media screen and (max-width: $break-mobile-large) {
-      display: none;
-    }
   }
 }

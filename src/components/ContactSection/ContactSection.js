@@ -16,16 +16,14 @@ class ContactSection extends Component {
     return (
       <Grid className='contact' >
 
-          <Row className="show-grid">
+          <Row >
             <Col xs={12} className='center' >
-              <div >
-                <h2>Send me a message!</h2>
-              </div>
+              <h2>Send me a message!</h2>
             </Col>
           </Row>
 
-          <Row className="show-grid">
-            <Col xs={6} >
+          <Row >
+            <Col xs={12} >
               <a target="_blank" rel="noopener noreferrer" href="https://villamartinarosario.com">
                 <h4 className='text-center' ><u>Villa Martina Consultorios</u></h4>
               </a>
@@ -49,9 +47,6 @@ class ContactSection extends Component {
                 <li>
                   <strong>Libraries:</strong> Fullcalendar for calendar UI and Moment.js for dates management.</li>
               </ul>
-            </Col>
-            <Col xs={6} >
-
             </Col>
           </Row>
 

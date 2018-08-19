@@ -13,15 +13,13 @@ class PortfolioSection extends Component {
     return (
       <Grid className='portfolio'>
 
-          <Row className="show-grid">
-            <Col xs={6} xsOffset={3} >
-              <div className='center'>
-                <h2>My Work </h2>
-              </div>
+          <Row>
+            <Col xs={12} className='center' >
+              <h2>My Work </h2>
             </Col>
           </Row>
 
-          <Row className="show-grid">
+          <Row >
             <Col xs={12} >
               <a target="_blank" rel="noopener noreferrer" href="https://villamartinarosario.com">
                 <h4 className='text-center' ><u>Villa Martina Consultorios</u></h4>
@@ -36,7 +34,7 @@ class PortfolioSection extends Component {
               <p>To develope this web I used the following tools:</p>
               <ul>
                 <li>
-                  <strong>Front-end:</strong> HTML5 and CSS3 with Bootstrap 3 and Javascript with jQuery</li>
+                  <strong>Front-end:</strong> HTML5 and CSS3 with Bootstrap and Javascript with jQuery</li>
                 <li>
                   <strong>Data exchange:</strong> Ajax with JSON</li>
                 <li>
@@ -44,12 +42,12 @@ class PortfolioSection extends Component {
                 <li>
                   <strong>Database:</strong> MySQL</li>
                 <li>
-                  <strong>Libraries:</strong> Fullcalendar for calendar UI and Moment.js for dates management.</li>
+                  <strong>Libraries:</strong> Fullcalendar for the calendar UI and Moment.js for dates management.</li>
               </ul>
             </Col>
           </Row>
 
-          <Row className='show-grid'>
+          <Row>
             <Carousel interval={7500} slide={false} >
               <Carousel.Item>
                 <Image width={1900} height={940} alt="Admin Panel" src={home} />
