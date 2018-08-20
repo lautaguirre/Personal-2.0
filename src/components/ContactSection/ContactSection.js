@@ -4,6 +4,8 @@ import { Grid, Col, Row } from 'react-bootstrap';
 
 import './ContactSection.scss';
 
+import Obfuscate from 'react-obfuscate'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
@@ -22,31 +24,18 @@ class ContactSection extends Component {
             </Col>
           </Row>
 
-          <Row >
-            <Col xs={12} >
-              <a target="_blank" rel="noopener noreferrer" href="https://villamartinarosario.com">
-                <h4 className='text-center' ><u>Villa Martina Consultorios</u></h4>
+          <Row  >
+            <Col xs={6} className='center' >
+              <h3>E-mail</h3>
+              <Obfuscate email="lauta.nahuel94@gmail.com" linkText='E-mail'>
+                <FontAwesomeIcon icon={faEnvelope} size='5x' />
+              </Obfuscate>
+            </Col>
+            <Col xs={6} className='center' >
+              <h3>LinkedIn</h3>
+              <a target="_blank" rel="noopener noreferrer" href='https://www.linkedin.com/in/lautaguirre' >
+                <FontAwesomeIcon icon={faLinkedin} size='5x' />
               </a>
-              <p>
-                This is a freelance project, it is about a website with a responsive design that deals with offices
-                reservations by hours for certain kind of professionals. The users can login with a personal account
-                and, with a calendar UI, check the offices availability and then select the dates and hours that they
-                want to reserve the offices. It also counts with an admin panel where the person in charge can create,
-                update or disable users. Admins can also query users information as well as the reservations per month.
-              </p>
-              <p>To develope this web I used the following tools:</p>
-              <ul>
-                <li>
-                  <strong>Front-end:</strong> HTML5 and CSS3 with Bootstrap 3 and Javascript with jQuery</li>
-                <li>
-                  <strong>Data exchange:</strong> Ajax with JSON</li>
-                <li>
-                  <strong>Back-end:</strong> PHP</li>
-                <li>
-                  <strong>Database:</strong> MySQL</li>
-                <li>
-                  <strong>Libraries:</strong> Fullcalendar for calendar UI and Moment.js for dates management.</li>
-              </ul>
             </Col>
           </Row>
 

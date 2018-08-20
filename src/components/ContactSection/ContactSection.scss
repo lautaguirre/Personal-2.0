@@ -1,3 +1,17 @@
-.contact {
+@import '../../assets/styles/colors.scss';
 
+.contact {
+  margin-bottom: 50px;
+
+  .center {
+    flex-direction: column;
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: black;
+    }
+  }
 }

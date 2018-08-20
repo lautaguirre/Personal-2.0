@@ -21,7 +21,7 @@ class PortfolioSection extends Component {
 
           <Row >
             <Col xs={12} >
-              <a target="_blank" rel="noopener noreferrer" href="https://villamartinarosario.com">
+              <a target="_blank" rel="noopener noreferrer" href="https://villamartinarosario.com" >
                 <h4 className='text-center' ><u>Villa Martina Consultorios</u></h4>
               </a>
               <p>
@@ -30,8 +30,9 @@ class PortfolioSection extends Component {
                 and, with a calendar UI, check the offices availability and then select the dates and hours that they
                 want to reserve the offices. It also counts with an admin panel where the person in charge can create,
                 update or disable users. Admins can also query users information as well as the reservations per month.
+                (I'm also planning to update this project using Laravel + ReactJs)
               </p>
-              <p>To develope this web I used the following tools:</p>
+              <p>To develope this website I used:</p>
               <ul>
                 <li>
                   <strong>Front-end:</strong> HTML5 and CSS3 with Bootstrap and Javascript with jQuery</li>
@@ -48,7 +49,7 @@ class PortfolioSection extends Component {
           </Row>
 
           <Row>
-            <Carousel interval={7500} slide={false} >
+            <Carousel interval={7500} slide={false} className='shadow' >
               <Carousel.Item>
                 <Image width={1900} height={940} alt="Admin Panel" src={home} />
               </Carousel.Item>
@@ -59,6 +60,34 @@ class PortfolioSection extends Component {
                 <Image width={1900} height={940} alt="Admin Panel" src={adminPanel} />
               </Carousel.Item>
             </Carousel>
+          </Row>
+
+          <hr/>
+
+          <Row >
+            <Col xs={12} >
+              <h4 className='text-center' ><u>This Website</u></h4>
+              <p>
+                This serves as my CV and a simple demo of what I can do in the Front-End. Feel free to check the responsive design also.
+              </p>
+              <p>
+                To develop this  website I used:
+              </p>
+              <ul>
+                <li>
+                  <strong>ReactJs</strong>
+                </li>
+                <li>
+                  <strong>Webpack</strong>
+                </li>
+                <li>
+                  <strong>Bootstrap</strong>
+                </li>
+                <li>
+                  <strong>Sass</strong>
+                </li>
+              </ul>
+            </Col>
           </Row>
 
       </Grid>

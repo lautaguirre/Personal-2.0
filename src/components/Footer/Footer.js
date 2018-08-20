@@ -18,7 +18,7 @@ class Footer extends Component {
         <Row >
           <Col lg={12} className='center' >
             <h4>Thanks for reading!</h4>
-            <a href='#home' className='center' >
+            <a href='#home' className='center shadow' >
               <FontAwesomeIcon icon={faArrowUp}  />
             </a>
           </Col>

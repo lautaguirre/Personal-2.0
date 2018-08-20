@@ -84,16 +84,34 @@ class AboutSection extends Component {
                         <hr />
                         <ul>
                           <li>
-                            Employee at <strong>“Park City Mountain Resort”</strong> located in Utah, United States for 5 months.
+                            <strong>Full-Stack Developer at Francovigh S.A. (04/2018 – Present)</strong><br />
+                            Part of the IT team at a metallurgical company, developing and maintaining the
+                            company's web system using <strong>PHP Yii MVC Framework, Javascript and Bootstrap.</strong>
+                          </li>
+                          <hr />
+                          <li>
+                            <strong>ReactJS Developer at United Virtualities (04/2018 – 06/2018)</strong><br />
+                            As an independent contractor I was part of the Front-End team in a project for a United
+                            States client using <strong>ReactJS + Redux.</strong>
+                          </li>
+                          <hr />
+                          <li>
+                            <strong>Full Stack Developer (07/2017 – 04/2018)</strong><br />
+                            Developing my own personal and freelance projects, which you can see at the <a href='#portfolio' ><u>PORTFOLIO</u></a> section.<br />
+                            Used tools such as <strong>HTML5, CSS3, SASS, Bootstrap 4, Javascript, jQuery, ReactJS, PHP,
+                            OOP, MVC, Ajax, JSON and MySQL along with Git and Agile Boards.</strong>
+                          </li>
+                          <hr />
+                          <li>
+                            <strong>Retail employee at “Falabella Retail S.A." (06/2017 – 07/2017)</strong><br />
+                            Located at Rosario, Santa Fe, Argentina. Season employee. Part of the Men's section
+                            team in charge of managing stock, making sales and helping clients.
+                          </li>
+                          <hr />
+                          <li>
+                            <strong>Barista at “Park City Mountain Resort” (12/2016 – 04/2017)</strong><br />
+                            Located in Utah, United States. Season employee.
                             Occupied positions as cashier, busser, bartender and barista.
-                          </li>
-                          <hr />
-                          <li>
-                            Season employee at <strong>“Falabella Retail”</strong> at Rosario, Santa Fe, Argentina.
-                          </li>
-                          <hr />
-                          <li>
-                            My own freelance projects, which you can see at the <a href='#portfolio' ><u>PORTFOLIO</u></a> section.
                           </li>
                         </ul>
                       </Col>
