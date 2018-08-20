@@ -62,7 +62,7 @@ class AboutSection extends Component {
                         <ul>
                           <li>
                             <strong>Higschool:</strong>  San Juan Bautista de La Salle Institute
-                            (Economics and Management of Organizations)
+                            (Economics and Management of Organizations).
                           </li>
                           <hr />
                           <li>
