@@ -68,7 +68,9 @@ class PortfolioSection extends Component {
             <Col xs={12} >
               <h4 className='text-center' ><u>This Website</u></h4>
               <p>
-                This serves as my CV and a simple demo of what I can do in the Front-End. Feel free to check the responsive design also.
+                This serves as my CV and a simple demo of what I can do in the Front-End, feel free to check the responsive design. And
+                if you want to take a look at the source code you can do it
+                <a target="_blank" rel="noopener noreferrer" href='https://github.com/lautaguirre/Personal-2.0' > <u>HERE</u></a>.
               </p>
               <p>
                 To develop this  website I used:
