@@ -8,7 +8,9 @@
   }
 
   h2 {
-    font-size: 29px;
+    @media screen and (max-width: $break-mobile-medium) {
+      font-size: 25px;
+    }
   }
 
   img {
