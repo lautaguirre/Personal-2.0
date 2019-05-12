@@ -1,0 +1,11 @@
+@import '../../assets/styles/colors';
+
+.navigation-bar-section {
+  .nav-link.active {
+    color: $opacity-grey !important;
+
+    &:hover {
+      color: $darker-grey !important;
+    }
+  }
+}

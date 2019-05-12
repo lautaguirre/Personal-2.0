@@ -14,7 +14,6 @@ class Footer extends Component {
   render() {
     return (
       <Container fluid={true} className='footer center' >
-
         <Row >
           <Col lg={12} className='center' >
             <h4>Thanks for reading!</h4>
@@ -23,7 +22,6 @@ class Footer extends Component {
             </a>
           </Col>
         </Row>
-
       </Container>
     );
   }
