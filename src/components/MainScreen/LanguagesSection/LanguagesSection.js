@@ -29,7 +29,7 @@ const languagesData = [
 class LanguagesSection extends Component {
   renderLanguages = (language) => {
     return (
-      <div>
+      <div key={language.name}>
         <h3>
           {language.name}
           <span className='hideOnMobile'>

@@ -92,19 +92,21 @@ class ProgrammingSection extends Component {
       const renderList = data.map((item) => {
         if (item.type === 'icon') {
           return (
-            <Col xs={6} md={3} className='center' >
+            <Col xs={6} md={3} className='center' key={item.description}>
               <FontAwesomeIcon icon={item.asset} size='5x' />
               <h4>{item.description}</h4>
             </Col>
           );
         } else if (item.type === 'image') {
           return (
-            <Col xs={6} md={3} className='center' >
+            <Col xs={6} md={3} className='center' key={item.description}>
               <Image src={item.asset} fluid />
               <h4>{item.description}</h4>
             </Col>
           );
         }
+
+        return null;
       });
 
       return (
