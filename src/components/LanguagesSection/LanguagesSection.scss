@@ -1,7 +1,11 @@
 @import '../../assets/styles/colors.scss';
 
 .languages {
-  .progress-bar {
-    background-color: $opacity-grey;
+  .progress {
+    margin-bottom: 20px;
+
+    .progress-bar {
+      background-color: $opacity-grey;
+    }
   }
 }

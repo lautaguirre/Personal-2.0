@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 
 import './ContactSection.scss';
 
@@ -16,7 +16,7 @@ library.add(faLinkedin, faEnvelope);
 class ContactSection extends Component {
   render() {
     return (
-      <Grid className='contact' >
+      <Container className='contact' >
 
           <Row >
             <Col xs={12} className='center' >
@@ -39,7 +39,7 @@ class ContactSection extends Component {
             </Col>
           </Row>
 
-      </Grid>
+      </Container>
     );
   }
 }

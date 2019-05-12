@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Navbar, NavItem, Nav, Image } from 'react-bootstrap';
+import { Navbar, Container, Nav, Image } from 'react-bootstrap';
 
 import terminal from '../../assets/images/terminal.svg';
 
@@ -12,38 +12,37 @@ library.add(faHome, faUser, faImages, faEnvelope);
 class NavigationBar extends Component {
   render() {
     return (
-        <Navbar collapseOnSelect fixedTop >
+      <Navbar collapseOnSelect bg="light" fixed="top" expand="lg" className="shadow">
+        <Container>
 
-          <Navbar.Header>
-            <Navbar.Brand>
-               <Image src={terminal} />
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
+          <Navbar.Brand>
+            <Image src={terminal} width={20} height={20} fluid />
+          </Navbar.Brand>
 
-          <Navbar.Collapse>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+          <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
-
-              <NavItem eventKey={1} href="#home">
+              <Nav.Link href="#home">
                 Home &nbsp;<FontAwesomeIcon icon={faHome} />
-              </NavItem>
+              </Nav.Link>
 
-              <NavItem eventKey={2} href="#about">
+              <Nav.Link href="#about">
                 About &nbsp;<FontAwesomeIcon icon={faUser} />
-              </NavItem>
+              </Nav.Link>
 
-              <NavItem eventKey={3} href="#portfolio">
+              <Nav.Link href="#portfolio">
                 Portfolio &nbsp;<FontAwesomeIcon icon={faImages} />
-              </NavItem>
+              </Nav.Link>
 
-              <NavItem eventKey={4} href="#contact">
+              <Nav.Link href="#contact">
                 Contact &nbsp;<FontAwesomeIcon icon={faEnvelope} />
-              </NavItem>
-
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
 
-        </Navbar>
+        </Container>
+      </Navbar>
     );
   }
 }

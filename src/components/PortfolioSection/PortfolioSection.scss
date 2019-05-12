@@ -3,6 +3,12 @@
 .portfolio {
   margin-bottom: 50px;
 
+  .carousel-indicators {
+    & > li {
+      background-color: black;
+    }
+  }
+
   p, li {
     font-size: 16px;
     line-height: 1.8;

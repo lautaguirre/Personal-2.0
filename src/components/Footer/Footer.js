@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 
 import './Footer.scss';
 
@@ -13,7 +13,7 @@ library.add(faArrowUp);
 class Footer extends Component {
   render() {
     return (
-      <Grid fluid={true} className='footer center' >
+      <Container fluid={true} className='footer center' >
 
         <Row >
           <Col lg={12} className='center' >
@@ -24,7 +24,7 @@ class Footer extends Component {
           </Col>
         </Row>
 
-      </Grid>
+      </Container>
     );
   }
 }

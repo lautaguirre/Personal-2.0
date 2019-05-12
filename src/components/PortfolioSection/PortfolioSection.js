@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 
-import { Grid, Col, Row, Carousel, Image } from 'react-bootstrap';
+import { Container, Col, Row, Carousel, Image } from 'react-bootstrap';
 
 import home from '../../assets/images/portfolio1.png';
 import userPanel from '../../assets/images/portfolio2.png';
 import adminPanel from '../../assets/images/portfolio3.png';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+
 import './PortfolioSection.scss';
+
+library.add(faChevronRight, faChevronLeft);
 
 class PortfolioSection extends Component {
   render() {
+    const carouselNext = <FontAwesomeIcon icon={faChevronRight} size="3x" color="black"/>;
+    const carouselPrevious = <FontAwesomeIcon icon={faChevronLeft} size="3x" color="black"/>;
+
     return (
-      <Grid className='portfolio'>
+      <Container className='portfolio'>
 
           <Row>
             <Col xs={12} className='center' >
@@ -49,15 +58,20 @@ class PortfolioSection extends Component {
           </Row>
 
           <Row>
-            <Carousel interval={7500} slide={false} className='shadow' >
+            <Carousel
+              interval={7500}
+              className='shadow'
+              nextIcon={carouselNext}
+              prevIcon={carouselPrevious}
+            >
               <Carousel.Item>
-                <Image width={1900} height={940} alt="Admin Panel" src={home} />
+                <Image alt="Admin Panel" src={home} fluid />
               </Carousel.Item>
               <Carousel.Item>
-                <Image width={1900} height={940} alt="Admin Panel" src={userPanel} />
+                <Image alt="Admin Panel" src={userPanel} fluid />
               </Carousel.Item>
               <Carousel.Item>
-                <Image width={1900} height={940} alt="Admin Panel" src={adminPanel} />
+                <Image alt="Admin Panel" src={adminPanel} fluid />
               </Carousel.Item>
             </Carousel>
           </Row>
@@ -92,7 +106,7 @@ class PortfolioSection extends Component {
             </Col>
           </Row>
 
-      </Grid>
+      </Container>
     );
   }
 }

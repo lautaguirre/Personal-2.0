@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Col, Row, Image, ListGroupItem, ListGroup } from 'react-bootstrap';
+import { Container, Col, Row, Image, ListGroupItem, ListGroup } from 'react-bootstrap';
 
 import avatar from '../../assets/images/avatar.png';
 
@@ -15,18 +15,18 @@ library.add(faAddressCard, faGraduationCap, faBriefcase);
 class AboutSection extends Component {
   render() {
     return (
-      <Grid>
+      <Container>
         <div id='about' className='about'>
 
-          <Row >
+          <Row>
             <Col xs={12} className='center' >
               <h2>About</h2>
             </Col>
           </Row>
 
-          <Row >
-            <Col xs={12} xsHidden={true} className='center aboutHeader' >
-              <Image width={165} height={165} className='shadow' src={avatar} circle responsive />
+          <Row>
+            <Col xs={12} className='center aboutHeader hideOnMobile'>
+              <Image width={165} height={165} className='shadow' src={avatar} roundedCircle fluid />
             </Col>
           </Row>
 
@@ -36,7 +36,7 @@ class AboutSection extends Component {
 
                 <ListGroupItem>
                     <Row>
-                      <Col xs={2} className='center' xsHidden={true} >
+                      <Col xs={2} className='center hideOnMobile'>
                         <FontAwesomeIcon icon={faAddressCard} size="5x" />
                       </Col>
                       <Col xs={10} >
@@ -53,7 +53,7 @@ class AboutSection extends Component {
 
                 <ListGroupItem>
                     <Row >
-                      <Col xs={2} className='center' xsHidden={true} >
+                      <Col xs={2} className='center hideOnMobile'>
                           <FontAwesomeIcon icon={faGraduationCap} size="5x" />
                       </Col>
                       <Col xs={10} >
@@ -76,7 +76,7 @@ class AboutSection extends Component {
 
                 <ListGroupItem>
                     <Row >
-                      <Col xs={2} className='center' xsHidden={true} >
+                      <Col xs={2} className='center hideOnMobile'>
                           <FontAwesomeIcon icon={faBriefcase} size="5x"  />
                       </Col>
                       <Col xs={10} >
@@ -123,7 +123,7 @@ class AboutSection extends Component {
           </Row>
 
         </div>
-      </Grid>
+      </Container>
     );
   }
 }
