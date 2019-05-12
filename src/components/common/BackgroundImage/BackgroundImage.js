@@ -4,7 +4,6 @@ import './BackgroundImage.scss';
 
 class App extends Component {
   render() {
-
     let box = this.props.showBox ?
       <span className='backgroundBox center' >
         {this.props.boxText.toUpperCase()}

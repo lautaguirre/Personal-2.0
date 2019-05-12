@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-
 import { Navbar, Container, Nav, Image } from 'react-bootstrap';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faImages, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-import terminal from '../../assets/images/terminal.svg';
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faImages, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import terminal from '../../../assets/images/terminal.svg';
 
 import './NavigationBar.scss';
 

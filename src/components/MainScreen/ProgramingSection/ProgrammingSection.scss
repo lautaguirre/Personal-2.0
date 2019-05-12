@@ -1,6 +1,6 @@
-@import '../../assets/styles/colors.scss';
+@import '../../../assets/styles/colors.scss';
 
-.programming {
+.programming-section {
   color: $opacity-grey;
 
   h4 {
@@ -14,8 +14,7 @@
   }
 
   img {
-    max-width: 70px;
-    max-height: 70px;
+    max-height: 80px;
   }
 
   .center {

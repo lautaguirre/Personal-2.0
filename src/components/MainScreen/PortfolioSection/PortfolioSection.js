@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-
 import { Container, Col, Row, Carousel, Image } from 'react-bootstrap';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-import home from '../../assets/images/portfolio1.png';
-import userPanel from '../../assets/images/portfolio2.png';
-import adminPanel from '../../assets/images/portfolio3.png';
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import home from '../../../assets/images/portfolio1.png';
+import userPanel from '../../../assets/images/portfolio2.png';
+import adminPanel from '../../../assets/images/portfolio3.png';
 
 import './PortfolioSection.scss';
 
@@ -20,7 +18,7 @@ class PortfolioSection extends Component {
     const carouselPrevious = <FontAwesomeIcon icon={faChevronLeft} size="3x" color="black"/>;
 
     return (
-      <Container className='portfolio'>
+      <Container className='portfolio-section'>
 
           <Row>
             <Col xs={12} className='center' >
