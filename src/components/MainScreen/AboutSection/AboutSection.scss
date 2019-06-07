@@ -11,19 +11,6 @@
     margin-bottom: 10px;
   }
 
-  .list-group {
-    border-radius: 10px;
-
-    .list-group-item:first-child {
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-    .list-group-item:last-child {
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-    }
-  }
-
   .aboutHeader {
     margin-bottom: 30px;
   }

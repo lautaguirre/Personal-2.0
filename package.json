@@ -10,10 +10,12 @@
     "bootstrap": "^4.3.1",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
+    "react-animations": "^1.0.0",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-obfuscate": "^3.6.2",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "styled-components": "^4.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
