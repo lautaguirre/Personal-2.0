@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import NavigationBar from '../common/NavigationBar/NavigationBar';
 import BackgroundImage from '../common/BackgroundImage/BackgroundImage';
 import AboutSection from './AboutSection/AboutSection';
 import LanguagesSection from './LanguagesSection/LanguagesSection';
@@ -13,9 +12,7 @@ class MainScreen extends Component {
   render() {
     return (
       <div>
-        <NavigationBar />
-
-        <BackgroundImage image={'mainImage'} showBox boxText={'Lautaro Aguirre'} sectionName={'home'} />
+        <BackgroundImage image={'mainImage'} showBox boxText={'Lautaro Aguirre'} />
 
         <AboutSection />
 

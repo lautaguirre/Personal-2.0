@@ -86,7 +86,7 @@ class PortfolioItem extends Component {
 
     const animation = keyframes`${fadeIn}`;
     const AnimatedDiv = styled.div`
-      animation: 1s ${animation};
+      animation: 2s ${animation};
     `;
 
     return (

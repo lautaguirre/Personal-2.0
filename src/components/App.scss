@@ -3,6 +3,10 @@
 .app {
   color: $darker-grey;
 
+  .app-content {
+    margin-top: 56px;
+  }
+
   h2, h3 {
     margin-top: 20px;
     margin-bottom: 10px;

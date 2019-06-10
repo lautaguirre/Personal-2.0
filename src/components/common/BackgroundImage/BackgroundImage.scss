@@ -1,6 +1,6 @@
 .mainImage {
   background-image: url('../../../assets/images/main.jpg');
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
 }
 
 .portfolioImage {
