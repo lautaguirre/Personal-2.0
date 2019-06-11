@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, Col, Form, Button } from 'react-bootstrap';
+import { Field, reduxForm } from 'redux-form';
+
+import InputText from '../common/InputText/InputText';
+import InputCheck from '../common/InputCheck/InputCheck';
 
 import './Login.scss';
 
@@ -11,22 +15,29 @@ class Login extends Component {
           <ListGroup className='shadow'>
             <ListGroupItem>
               <Form>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
-                  <Form.Control.Feedback type="invalid">
-                    Please provide a valid city.
-                  </Form.Control.Feedback>
-                </Form.Group>
+                <Field
+                  name="email"
+                  label="Email Address"
+                  placeholder="example@example.com"
+                  component={InputText}
+                />
 
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group controlId="formBasicChecbox">
-                  <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <div>
+                <Field
+                  name="password"
+                  label="Password"
+                  placeholder="********"
+                  type="password"
+                  component={InputText}
+                />
+
+                <Field
+                  name="rememberMe"
+                  label="Remember Me"
+                  type="checkbox"
+                  component={InputCheck}
+                />
+
+                <div className="d-flex justify-content-end">
                   <Button variant="primary" type="submit">
                     Submit
                   </Button>
@@ -40,4 +51,6 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default reduxForm({
+  form: 'LoginForm',
+})(Login);
