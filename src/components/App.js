@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import NavigationBar from './common/NavigationBar/NavigationBar';
 import MainScreen from './MainScreen/MainScreen';
-import LoginScreen from './Login/Login';
+import LoginScreen from './Login/container/LoginContainer';
 
-import store from '../store';
+import store from './store';
 
 import './App.scss';
 

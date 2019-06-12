@@ -18,8 +18,8 @@ class InputCheck extends Component {
           type={type}
           custom
           id={input.name}
-          isValid={(touched || dirty) && !error}
           isInvalid={(touched || dirty) && error}
+          feedback={(touched || dirty) && error}
         />
       </Form.Group>
     );
