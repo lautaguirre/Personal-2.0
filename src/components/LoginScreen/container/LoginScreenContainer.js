@@ -2,22 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Login from '../components/Login';
+import LoginScreen from '../components/LoginScreen';
 
 import * as loginActions from '../actions/loginActions';
 
-import './Login.scss';
+import './LoginScreen.scss';
 
-class LoginContainer extends Component {
+class LoginScreenContainer extends Component {
   handleSubmit = (values) => {
     this.props.loginActions.sendLoginData(values);
   }
 
   render() {
     return (
-      <div className="login-screen-container center">
-        <Login {...this.props} onSubmit={this.handleSubmit} />
-      </div>
+      <LoginScreen {...this.props} onSubmit={this.handleSubmit} />
     );
   }
 }
@@ -31,4 +29,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenContainer);

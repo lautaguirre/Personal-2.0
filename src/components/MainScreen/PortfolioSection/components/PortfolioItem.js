@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Col, Carousel, Image, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faChevronLeft, faLink } from '@fortawesome/free-solid-svg-icons';
 import styled, { keyframes } from 'styled-components';
 import { fadeIn } from 'react-animations';
 
-library.add(faChevronRight, faChevronLeft);
+library.add(faChevronRight, faChevronLeft, faLink);
 
 class PortfolioItem extends Component {
   constructor(props) {
@@ -90,14 +90,15 @@ class PortfolioItem extends Component {
     `;
 
     return (
-      <Col lg={6} className="mb-3">
+      <Col lg={6} className="mb-3 portfolio-item">
         <ListGroup className='shadow'>
           <ListGroupItem>
             {titleLink ? (
-              <a target="_blank" rel="noopener noreferrer" href={titleLink} >
-                <h4 className='text-center' >
+              <a className="center item-link" target="_blank" rel="noopener noreferrer" href={titleLink} >
+                <h4 className="mb-0">
                   <u>{title}</u>
                 </h4>
+                <FontAwesomeIcon icon={faLink} className="ml-2" />
               </a>
             ) : (
               <h4 className='text-center' >
