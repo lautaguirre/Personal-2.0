@@ -30,7 +30,16 @@ const aboutData = [
     header: 'Work experience',
     list: [
       {
-        itemHeader: 'React, React Native & Node Developer at CIBA Servicios Sociales (10/2018 – 4/2019)',
+        itemHeader: 'ReactJs Developer At Accelone (03/2019 - Present)',
+        itemText: (
+          <span>
+            Part of the Front-end team as an independent contractor in a project for a United States client
+            in the insurances industry using <strong>ReactJS + Redux.</strong>
+          </span>
+        ),
+      },
+      {
+        itemHeader: 'React, React Native & Node Developer at CIBA Servicios Sociales (10/2018 – 03/2019)',
         itemText: (
           <span>
             Developed mobile (iOS and Android) and web apps required by a social services and veterinary company.
@@ -103,10 +112,10 @@ class AboutSection extends Component {
     return (
       <ListGroupItem key={section.header}>
         <Row>
-          <Col xs={2} className='center hideOnMobile'>
+          <Col xs={0} md={2} className='center hideOnMobile'>
             <FontAwesomeIcon icon={section.icon} size="5x"  />
           </Col>
-          <Col xs={10} >
+          <Col xs={12} md={10} >
             <h4>{section.header}</h4>
             <hr/>
             <ul>
@@ -124,7 +133,7 @@ class AboutSection extends Component {
         <div id='about' className='about-section'>
           <Row>
             <Col xs={12} className='center' >
-              <h2>About</h2>
+              <h2 className="title">About</h2>
             </Col>
           </Row>
 

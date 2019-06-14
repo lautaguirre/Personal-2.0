@@ -17,8 +17,6 @@ class PrivateRoute extends Component {
   render() {
     const { login } = this.props;
 
-    console.log(login);
-
     if (localStorage.getItem('token') || sessionStorage.getItem('token')) {
       if (login.loginFetching || _.isEmpty(login.profile)) {
         return (

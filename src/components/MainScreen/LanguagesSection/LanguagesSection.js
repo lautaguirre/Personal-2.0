@@ -49,7 +49,10 @@ class LanguagesSection extends Component {
         <div id='languages' className='languages-section' >
           <Row>
             <Col xs={12} className='center' >
-                <h2>Languages &nbsp;<FontAwesomeIcon icon={faComments} /></h2>
+              <h2 className="title mr-3">
+                Languages
+              </h2>
+              <FontAwesomeIcon className="opacity-grey" icon={faComments} size="2x" />
             </Col>
           </Row>
 

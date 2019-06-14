@@ -118,7 +118,7 @@ class ProgrammingSection extends Component {
       return (
         <Row key={idx}>
           <Col xs={12} className='center' >
-            <h2>{data.name}</h2>
+            <h2 className="title">{data.name}</h2>
           </Col>
         </Row>
       );

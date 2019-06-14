@@ -12,7 +12,7 @@ class LoginScreen extends Component {
 
     return (
       <Container className="login-screen-container center">
-        <Col xs={6} className="pt-3">
+        <Col xs={12} md={6} >
           <ListGroup className='shadow'>
             <ListGroupItem>
               <Form onSubmit={this.props.handleSubmit}>

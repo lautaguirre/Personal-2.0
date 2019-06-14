@@ -16,8 +16,8 @@ class ContactSection extends Component {
       <Container className='contact-section'>
 
           <Row >
-            <Col xs={12} className='center' >
-              <h2>Send me a message!</h2>
+            <Col xs={12} className='center text-center' >
+              <h2 className="title">Send me a message!</h2>
             </Col>
           </Row>
 

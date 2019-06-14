@@ -50,8 +50,6 @@ export const getUser = () => {
   return async dispatch => {
     dispatch(setLoginFetching(true));
 
-    console.log('get user call');
-
     try {
       const { data } = await axios.get('users/me');
 

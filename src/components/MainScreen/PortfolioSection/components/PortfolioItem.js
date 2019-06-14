@@ -95,7 +95,7 @@ class PortfolioItem extends Component {
           <ListGroupItem>
             {titleLink ? (
               <a className="center item-link" target="_blank" rel="noopener noreferrer" href={titleLink} >
-                <h4 className="mb-0">
+                <h4 className="text-center mb-0">
                   <u>{title}</u>
                 </h4>
                 <FontAwesomeIcon icon={faLink} className="ml-2" />

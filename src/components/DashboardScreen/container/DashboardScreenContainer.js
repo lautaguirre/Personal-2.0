@@ -4,13 +4,13 @@ import { bindActionCreators } from 'redux';
 
 import DashboardScreen from '../components/DashboardScreen';
 
-import * as loginActions from '../actions/loginActions';
+import * as dashboardActions from '../actions/dashboardActions';
 
 import './DashboardScreen.scss';
 
 class DashboardScreenContainer extends Component {
   handleSubmit = (values) => {
-    this.props.loginActions.sendLoginData(values);
+    this.props.dashboardActions.sendLoginData(values);
   }
 
   render() {
@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loginActions: bindActionCreators(loginActions, dispatch),
+  dashboardActions: bindActionCreators(dashboardActions, dispatch),
 });
 
 

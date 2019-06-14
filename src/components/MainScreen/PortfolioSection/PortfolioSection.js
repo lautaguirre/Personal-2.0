@@ -71,7 +71,7 @@ class PortfolioSection extends Component {
       <Container className='portfolio-section'>
         <Row>
           <Col xs={12} className='center'>
-            <h2>My Work</h2>
+            <h2 className="title">My Work</h2>
           </Col>
         </Row>
 

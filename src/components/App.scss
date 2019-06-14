@@ -7,10 +7,22 @@
     margin-top: 56px;
   }
 
+  .darker-grey {
+    color: $darker-grey;
+  }
+
+  .opacity-grey {
+    color: $opacity-grey;
+  }
+
   h2, h3 {
     margin-top: 20px;
     margin-bottom: 10px;
     color: $opacity-grey;
+
+    &.title {
+      text-decoration: underline;
+    }
   }
 
   .hideOnMobile {
