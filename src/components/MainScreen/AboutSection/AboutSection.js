@@ -69,7 +69,7 @@ const aboutData = [
         itemHeader: 'Full Stack Developer (07/2017 – 04/2018)',
         itemText: (
           <span>
-            Developing my own personal and freelance projects, which you can see at the <a href='#portfolio' ><u>PORTFOLIO</u></a> section.<br />
+            Developing my own personal and freelance projects, which you can see at the <u>PORTFOLIO</u> section.<br />
             Used tools such as <strong>HTML5, CSS3, SASS, Bootstrap 4, Javascript, jQuery, ReactJS, PHP,
             OOP, MVC, Ajax, JSON and MySQL along with Git and Agile Boards.</strong>
           </span>
