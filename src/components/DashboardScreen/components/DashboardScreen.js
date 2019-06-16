@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import About from './About/About';
 import Languages from './Languages/Languages';
 import Portfolio from './Portfolio/Portfolio';
+import Programming from './Programming/Programming';
 
 library.add(faGraduationCap, faBriefcase);
 
@@ -142,6 +143,79 @@ const portfolioItems = [
   },
 ];
 
+const programmingData = [
+  {
+    name: 'Programming Languages',
+    content: [
+      {
+        type: 'icon',
+        description: 'HTML5',
+        asset: 'faHtml5',
+      },
+      {
+        type: 'icon',
+        description: 'CSS3',
+        asset: 'faCss3Alt',
+      },
+      {
+        type: 'icon',
+        description: 'Javascript',
+        asset: 'faJs',
+      },
+      {
+        type: 'icon',
+        description: 'PHP',
+        asset: 'faPhp',
+      },
+    ],
+  },
+  {
+    name: 'Frameworks and Tools',
+    content: [
+      {
+        type: 'icon',
+        description: 'ReactJs',
+        asset: 'faReact',
+      },
+      {
+        type: 'image',
+        description: 'MongoDB',
+        asset: 'mongodbSvg',
+      },
+      {
+        type: 'icon',
+        description: 'NodeJs',
+        asset: 'faNode',
+      },
+      {
+        type: 'icon',
+        description: 'Git',
+        asset: 'faGitAlt',
+      },
+      {
+        type: 'icon',
+        description: 'Bootstrap',
+        asset: 'faBootstrap',
+      },
+      {
+        type: 'image',
+        description: 'MySQL',
+        asset: 'mySqlSvg',
+      },
+      {
+        type: 'image',
+        description: 'JSON',
+        asset: 'jsonSvg',
+      },
+      {
+        type: 'image',
+        description: 'JQuery',
+        asset: 'jquerySvg',
+      },
+    ],
+  },
+];
+
 class DashboardScreen extends Component {
   render() {
     return (
@@ -165,6 +239,11 @@ class DashboardScreen extends Component {
             <h2>Portfolio</h2>
             <ListGroup className="shadow">
               <Portfolio data={portfolioItems} />
+            </ListGroup>
+
+            <h2>Skills</h2>
+            <ListGroup className="shadow">
+              {programmingData.map(item => <Programming key={item.name} data={item} />)}
             </ListGroup>
           </Col>
         </Row>
