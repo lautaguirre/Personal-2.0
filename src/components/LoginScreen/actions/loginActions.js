@@ -55,6 +55,9 @@ export const getUser = () => {
 
       dispatch(setLoginData(data));
     } catch(e) {
+      localStorage.removeItem('token');
+      sessionStorage.removeItem('token');
+
       dispatch(setLoginFetching(false));
       history.push('/login');
     }

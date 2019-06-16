@@ -1,3 +1,28 @@
+@import '../../../assets/styles/colors';
+
 .dashboard-screen-container {
   min-height: calc(100vh - 56px);
+  margin-bottom: 20px;
+
+  .dashboard-language-item {
+    .language-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      @media screen and (max-width: $break-desktop-desktop) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  }
+
+  .input-range__track--active {
+    background-color: $darker-grey;
+  }
+
+  .input-range__slider {
+    background-color: $darker-grey;
+    border-color: $darker-grey;
+  }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Redirect } from 'react-router-dom';
 
 import LoginScreen from '../components/LoginScreen';
 
@@ -14,6 +15,10 @@ class LoginScreenContainer extends Component {
   }
 
   render() {
+    if (localStorage.getItem('token') || sessionStorage.getItem('token')) {
+      return <Redirect to="/dashboard" />;
+    }
+
     return (
       <LoginScreen {...this.props} onSubmit={this.handleSubmit} />
     );

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Accordion, Card, ListGroupItem, Button } from 'react-bootstrap';
+import { Accordion, Card, ListGroupItem, Button, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronCircleDown, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-
-library.add(faChevronCircleDown, faTrashAlt, faEdit);
+import * as icons from '@fortawesome/free-solid-svg-icons';
 
 class About extends Component {
   constructor(props) {
@@ -12,6 +9,7 @@ class About extends Component {
 
     this.state = {
       activeKey: null,
+      editable: false,
     };
   }
 
@@ -30,7 +28,7 @@ class About extends Component {
   }
 
   handleEdit = (id) => {
-    console.log('edit');
+    this.setState({ editable: true });
   }
 
   handleAdd = () => {
@@ -38,30 +36,37 @@ class About extends Component {
   }
 
   render() {
-    const { activeKey } = this.state;
+    const { activeKey, editable } = this.state;
     const { data } = this.props;
 
     return (
       <ListGroupItem>
-        <h2 className="mt-0">{data.header}</h2>
+        <div className="d-flex justify-content-between align-items-center mb-2">
+          <h2 className="my-0">{data.header}</h2>
+          <FontAwesomeIcon icon={icons[data.icon]} />
+        </div>
         <Accordion activeKey={`${activeKey}`}>
           {data.list.map((item, idx) => (
             <Card key={item.itemHeader}>
               <Accordion.Toggle as={Card.Header} eventKey={`${idx}`} onClick={() => this.toggleAccordion(idx)}>
                 <div className="d-flex align-items-center justify-content-between">
                   {item.itemHeader}
-                  <FontAwesomeIcon className="ml-3" icon={faChevronCircleDown} flip={activeKey === idx ? 'vertical' : null} />
+                  <FontAwesomeIcon className="ml-3" icon={icons.faChevronCircleDown} flip={activeKey === idx ? 'vertical' : null} />
                 </div>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey={`${idx}`}>
                 <Card.Body>
-                  {item.itemText}
+                  {editable ? (
+                    <Form.Group>
+                      <Form.Control value={item.itemText} as="textarea" rows="3" />
+                    </Form.Group>
+                  ) : item.itemText}
                   <div className="d-flex align-items-center justify-content-evenly mt-3">
                     <Button variant="outline-danger" onClick={() => this.handleDelete(item.id)}>
-                      Delete Item <FontAwesomeIcon icon={faTrashAlt} />
+                      Delete Item <FontAwesomeIcon icon={icons.faTrashAlt} />
                     </Button>
                     <Button variant="outline-primary" onClick={() => this.handleEdit(item.id)}>
-                      Edit Item <FontAwesomeIcon icon={faEdit} />
+                      Edit Item <FontAwesomeIcon icon={icons.faEdit} />
                     </Button>
                   </div>
                 </Card.Body>
