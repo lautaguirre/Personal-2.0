@@ -108,25 +108,25 @@ class ProgrammingSection extends Component {
         return null;
       });
 
-      return [
-        <Row key={idx}>
-          <Col xs={12} className='center' >
-            <h2 className="title">{data.name}</h2>
-          </Col>
-        </Row>,
-        <Row key={idx}>
-          {renderList}
-        </Row>
-      ];
+      return (
+        <div key={idx}>
+          <Row>
+            <Col xs={12} className='center' >
+              <h2 className="title">{data.name}</h2>
+            </Col>
+          </Row>
+          <Row>
+            {renderList}
+          </Row>
+        </div>
+      );
 
   }
 
   render() {
     return (
-      <Container>
-        <div id='programming' className='programming-section' >
-          {programmingData.map(this.renderProgramming)}
-        </div>
+      <Container id='programming' className='programming-section'>
+        {programmingData.map(this.renderProgramming)}
       </Container>
     );
   }
