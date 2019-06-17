@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Accordion, Card, Button, Form } from 'react-bootstrap';
+import { Accordion, Card, Button, Form, ListGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as icons from '@fortawesome/free-solid-svg-icons';
 
@@ -64,6 +64,15 @@ class Portfolio extends Component {
                     </li>
                   ))}
                 </ul>
+
+                <ListGroup>
+                  {item.images.map(image => (
+                    <ListGroup.Item action variant="light">
+                      {image}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+
                 <div className="d-flex align-items-center justify-content-evenly mt-3">
                   <Button variant="outline-danger" onClick={() => this.handleDelete(item.id)}>
                     Delete Item <FontAwesomeIcon icon={icons.faTrashAlt} />

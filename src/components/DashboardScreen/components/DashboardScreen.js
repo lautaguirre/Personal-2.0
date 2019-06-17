@@ -140,6 +140,7 @@ const portfolioItems = [
         name: 'Sass',
       }
     ],
+    images: [],
   },
 ];
 
