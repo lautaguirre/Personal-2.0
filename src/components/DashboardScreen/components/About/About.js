@@ -46,7 +46,7 @@ class About extends Component {
           <FontAwesomeIcon icon={icons[data.icon]} />
         </div>
         <Accordion activeKey={`${activeKey}`}>
-          {data.list.map((item, idx) => (
+          {data.items.map((item, idx) => (
             <Card key={item.itemHeader}>
               <Accordion.Toggle as={Card.Header} eventKey={`${idx}`} onClick={() => this.toggleAccordion(idx)}>
                 <div className="d-flex align-items-center justify-content-between">
@@ -62,10 +62,10 @@ class About extends Component {
                     </Form.Group>
                   ) : item.itemText}
                   <div className="d-flex align-items-center justify-content-evenly mt-3">
-                    <Button variant="outline-danger" onClick={() => this.handleDelete(item.id)}>
+                    <Button variant="outline-danger" onClick={() => this.handleDelete(item._id)}>
                       Delete Item <FontAwesomeIcon icon={icons.faTrashAlt} />
                     </Button>
-                    <Button variant="outline-primary" onClick={() => this.handleEdit(item.id)}>
+                    <Button variant="outline-primary" onClick={() => this.handleEdit(item._id)}>
                       Edit Item <FontAwesomeIcon icon={icons.faEdit} />
                     </Button>
                   </div>

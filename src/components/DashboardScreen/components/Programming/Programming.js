@@ -90,10 +90,10 @@ class Programming extends Component {
                   )}
 
                   <div className="d-flex align-items-center justify-content-evenly mt-3">
-                    <Button variant="outline-danger" onClick={() => this.handleDelete(item.id)}>
+                    <Button variant="outline-danger" onClick={() => this.handleDelete(item._id)}>
                       Delete Item <FontAwesomeIcon icon={icons.faTrashAlt} />
                     </Button>
-                    <Button variant="outline-primary" onClick={() => this.handleEdit(item.id)}>
+                    <Button variant="outline-primary" onClick={() => this.handleEdit(item._id)}>
                       Edit Item <FontAwesomeIcon icon={icons.faEdit} />
                     </Button>
                   </div>
