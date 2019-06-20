@@ -8,6 +8,7 @@ import MainScreen from './MainScreen/MainScreen';
 import LoginScreen from './LoginScreen/container/LoginScreenContainer';
 import DashboardScreen from './DashboardScreen/container/DashboardScreenContainer';
 import PrivateRoute from './common/PrivateRoute/PrivateRoute';
+import Loader from './common/Loader/Loader';
 
 import store from './store';
 import history from './history';
@@ -20,7 +21,10 @@ class App extends Component {
       <Provider store={store}>
         <div className='app'>
           <Router history={history} >
+            <Loader />
+
             <NavigationBar />
+
             <div className="app-content">
               <Switch>
                 <Route exact path='/' component={MainScreen} />

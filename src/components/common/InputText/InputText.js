@@ -9,20 +9,25 @@ class InputText extends Component {
       label,
       type,
       placeholder,
+      rows,
+      groupStyle,
+      onClick,
       meta: { error, touched, dirty },
     } = this.props;
 
     return (
-      <Form.Group>
+      <Form.Group style={groupStyle}>
         <Form.Label htmlFor={input.name}>{label}</Form.Label>
         <Form.Control
           {...input}
           id={input.name}
-          type={type || 'text'}
+          as={type}
           placeholder={placeholder}
           maxLength={maxLength}
           isValid={(touched || dirty) && !error}
           isInvalid={(touched || dirty) && error}
+          rows={rows}
+          onClick={onClick}
         />
         <Form.Control.Feedback type={(touched || dirty) && error ? 'invalid' : 'valid'}>
           {(touched || dirty) && error}

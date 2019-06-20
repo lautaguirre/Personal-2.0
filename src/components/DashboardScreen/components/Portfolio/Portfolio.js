@@ -67,7 +67,7 @@ class Portfolio extends Component {
 
                 <ListGroup>
                   {item.images.map(image => (
-                    <ListGroup.Item action variant="light">
+                    <ListGroup.Item key={image} action variant="light">
                       {image}
                     </ListGroup.Item>
                   ))}

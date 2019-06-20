@@ -1,0 +1,1 @@
+export const SET_COMMON_LOADING = 'SET_COMMON_LOADING';

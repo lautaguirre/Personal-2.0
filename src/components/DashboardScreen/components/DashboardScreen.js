@@ -12,10 +12,12 @@ import * as actions from '../actions/dashboardActions';
 
 class DashboardScreen extends Component {
   componentDidMount() {
-    this.props.actions.fetchAbout();
-    this.props.actions.fetchLanguages();
-    this.props.actions.fetchPortfolio();
-    this.props.actions.fetchSkills();
+    const { actions } = this.props;
+
+    actions.fetchAbout();
+    actions.fetchLanguages();
+    actions.fetchPortfolio();
+    actions.fetchSkills();
   }
 
   render() {
@@ -35,7 +37,7 @@ class DashboardScreen extends Component {
           <Col xs={12} md={4}>
             <h2>About</h2>
             <ListGroup className="shadow">
-              {about.map(item => <About key={item._id} data={item} />)}
+              {about.map((item, idx) => <About form={`AboutForm-${idx}`} key={item._id} data={item} />)}
             </ListGroup>
           </Col>
 
