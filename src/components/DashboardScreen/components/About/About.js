@@ -103,7 +103,7 @@ class About extends Component {
                     {editable === idx ? (
                       <Field
                         name="itemHeader"
-                        type="textarea"
+                        renderAs="textarea"
                         component={InputText}
                         groupStyle={{ width: '100%' }}
                         onClick={e => e.stopPropagation()}
@@ -118,7 +118,7 @@ class About extends Component {
                     {editable === idx ? (
                       <Field
                         name="itemText"
-                        type="textarea"
+                        renderAs="textarea"
                         rows="3"
                         component={InputText}
                         validate={[required]}

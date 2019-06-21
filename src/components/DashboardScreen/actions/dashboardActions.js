@@ -34,14 +34,14 @@ const setDeleteAbout = (_id, groupId) => ({
   },
 });
 
-export const deleteAbout = (id, groupId) => {
+export const deleteAbout = (_id, groupId) => {
   return async dispatch => {
     try {
       dispatch(setLoading(true));
 
-      await axios.delete('information/about');
+      await axios.delete(`information/about/${_id}`);
 
-      dispatch(setDeleteAbout(id, groupId));
+      dispatch(setDeleteAbout(_id, groupId));
       dispatch(setLoading(false));
     } catch(e) {
       dispatch(setLoading(false));

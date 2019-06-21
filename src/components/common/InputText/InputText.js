@@ -12,6 +12,7 @@ class InputText extends Component {
       rows,
       groupStyle,
       onClick,
+      renderAs,
       meta: { error, touched, dirty },
     } = this.props;
 
@@ -21,7 +22,8 @@ class InputText extends Component {
         <Form.Control
           {...input}
           id={input.name}
-          as={type}
+          type={type || 'text'}
+          as={renderAs}
           placeholder={placeholder}
           maxLength={maxLength}
           isValid={(touched || dirty) && !error}
