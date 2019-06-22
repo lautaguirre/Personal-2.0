@@ -98,7 +98,7 @@ export const createAbout = (payload, groupId, callback) => {
     try {
       dispatch(setLoading(true));
 
-      const { data } = await axios.post(`information/about`, payload);
+      const { data } = await axios.post(`information/about`, { payload, groupId });
 
       dispatch(setCreateAbout(data, groupId));
       dispatch(setLoading(false));
