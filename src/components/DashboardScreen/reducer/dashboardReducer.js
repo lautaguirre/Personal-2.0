@@ -60,6 +60,28 @@ export default (state = INITIAL_STATE, action) => {
           return aboutItem;
         }),
       };
+
+    case types.DELETE_DASHBOARD_LANGUAGE_ITEM:
+      return {
+        ...state,
+        languages: state.languages.filter(language => language._id !== action.payload._id),
+      };
+    case types.EDIT_DASHBOARD_LANGUAGE_ITEM:
+      return {
+        ...state,
+        languages: state.languages.map(language => {
+          if (language._id === action.payload.data._id) {
+            return action.payload.data;
+          }
+
+          return language;
+        }),
+      };
+    case types.CREATE_DASHBOARD_LANGUAGE_ITEM:
+      return {
+        ...state,
+        languages: [ ...state.languages, action.payload.data ],
+      };
     default:
       return state;
   }

@@ -8,7 +8,7 @@ import * as icons from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import InputText from '../../../common/InputText/InputText';
 
-import { required } from '../../../../lib/validations';
+import { required, maxLength512 } from '../../../../lib/validations';
 
 import * as actions from '../../actions/dashboardActions';
 
@@ -34,6 +34,8 @@ class About extends Component {
   }
 
   handleDelete = (id, groupId) => {
+    this.setState({ editable: null, addItem: false });
+
     Swal.fire({
       title: 'Are you sure?',
       type: 'warning',
@@ -107,7 +109,7 @@ class About extends Component {
                         component={InputText}
                         groupStyle={{ width: '100%' }}
                         onClick={e => e.stopPropagation()}
-                        validate={[required]}
+                        validate={[required, maxLength512]}
                       />
                     ) : item.itemHeader}
                     <FontAwesomeIcon className="ml-3" icon={icons.faChevronCircleDown} flip={activeKey === idx ? 'vertical' : null} />
@@ -121,7 +123,7 @@ class About extends Component {
                         renderAs="textarea"
                         rows="3"
                         component={InputText}
-                        validate={[required]}
+                        validate={[required, maxLength512]}
                       />
                     ) : item.itemText}
                     <div className="d-flex align-items-center justify-content-evenly mt-3">
@@ -137,7 +139,7 @@ class About extends Component {
                       ) : (
                         <Fragment>
                           <Button variant="outline-danger" onClick={() => this.handleDelete(item._id, data._id)}>
-                          Delete Item <FontAwesomeIcon icon={icons.faTrashAlt} />
+                            Delete Item <FontAwesomeIcon icon={icons.faTrashAlt} />
                           </Button>
                           <Button variant="outline-primary" onClick={() => this.setEditable(idx, item)}>
                             Edit Item <FontAwesomeIcon icon={icons.faEdit} />
@@ -152,7 +154,7 @@ class About extends Component {
           ))}
         </Accordion>
         <div className="center">
-          {!addItem && <Button variant="outline-success mt-3" onClick={() => this.handleAdd(data._id)}>Add Item</Button>}
+          {!addItem && <Button variant="outline-success mt-3" onClick={() => this.handleAdd()}>Add Item</Button>}
         </div>
       </ListGroupItem>
     );

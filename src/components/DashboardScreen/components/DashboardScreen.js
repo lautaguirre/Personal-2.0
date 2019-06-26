@@ -44,7 +44,7 @@ class DashboardScreen extends Component {
           <Col xs={12} md={4}>
             <h2>Languages</h2>
             <ListGroup className="shadow">
-              {languages.map((item, idx) => <Languages key={item._id} data={item} lastItem={idx + 1 === languages.length} />)}
+              <Languages languages={languages} />
             </ListGroup>
           </Col>
 
