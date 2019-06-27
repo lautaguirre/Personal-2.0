@@ -8,6 +8,7 @@ class InputText extends Component {
       maxLength,
       label,
       type,
+      disabled,
       placeholder,
       rows,
       groupStyle,
@@ -30,6 +31,7 @@ class InputText extends Component {
           isInvalid={(touched || dirty) && error}
           rows={rows}
           onClick={onClick}
+          disabled={disabled}
         />
         <Form.Control.Feedback type={(touched || dirty) && error ? 'invalid' : 'valid'}>
           {(touched || dirty) && error}

@@ -1,4 +1,4 @@
-export const required = value => (!value ? 'Required' : undefined);
+export const required = value => (!value || value.length <= 0 ? 'Required' : undefined);
 
 const maxLength = max => (
   value => (
@@ -37,5 +37,17 @@ export const email = value => (
 export const alphanumeric = value => (
   value && /[^a-zA-Z0-9 ]/i.test(value)
     ? 'Only alphanumeric characters'
+    : undefined
+);
+
+export const pngOnly = value => (
+  value && value[0] && value[0].type !== 'image/png'
+    ? 'Only PNG allowed'
+    : undefined
+);
+
+export const svgOnly = value => (
+  value && value[0] && value[0].type !== 'image/svg+xml'
+    ? 'Only SVG allowed'
     : undefined
 );

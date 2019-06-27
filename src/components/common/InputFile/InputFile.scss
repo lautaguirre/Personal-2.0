@@ -1,0 +1,13 @@
+@import '../../../assets/styles/colors';
+
+.custom-input-file-container {
+  .custom-file-input {
+    cursor: pointer;
+  }
+
+  .preview-container {
+    border: 1px dashed $darker-grey;
+    padding: 20px;
+    text-align: center;
+  }
+}

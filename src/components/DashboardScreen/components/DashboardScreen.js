@@ -56,7 +56,7 @@ class DashboardScreen extends Component {
 
             <h2>Skills</h2>
             <ListGroup className="shadow">
-              {skills.map(item => <Programming key={item._id} data={item} />)}
+              {skills.map((item, idx) => <Programming form={`SkillsForm-${idx}`} key={item._id} data={item} />)}
             </ListGroup>
           </Col>
         </Row>
