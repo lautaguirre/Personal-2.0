@@ -6,7 +6,7 @@ class InputCheck extends Component {
     const {
       input,
       label,
-      type,
+      type, // Must send Checkbox type to receive the checked prop
       meta: { error, touched, dirty },
     } = this.props;
 

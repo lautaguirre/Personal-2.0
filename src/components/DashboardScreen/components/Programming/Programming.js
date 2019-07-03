@@ -3,7 +3,6 @@ import { Accordion, Card, Button, ListGroupItem, Image } from 'react-bootstrap';
 import { reduxForm, reset, change, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Typeahead } from 'react-bootstrap-typeahead';
 import _ from 'lodash';
 import Swal from 'sweetalert2';
 import * as icons from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +11,8 @@ import * as brandIcons from '@fortawesome/free-brands-svg-icons';
 import InputFile from '../../../common/InputFile/InputFile';
 import { required, svgOnly, maxLength120 } from '../../../../lib/validations';
 import InputText from '../../../common/InputText/InputText';
+import InputRadio from '../../../common/InputRadio/InputRadio';
+import InputTypeAhead from '../../../common/InputTypeAhead/InputTypeAhead';
 
 const iconsUnion = { ...{...icons}.fas, ...{...brandIcons}.fab };
 const iconsArray = _.map(iconsUnion, (icon, key) => {
@@ -75,7 +76,7 @@ class Programming extends Component {
     this.setState({ editable: idx, addItem: false });
 
     dispatch(change(form, 'description', item.description));
-    dispatch(change(form, 'asset', [{ type: 'image/svg+xml', asset: item.asset }]));
+    dispatch(change(form, 'asset', item.type === 'image' ? [{ type: 'image/svg+xml', asset: item.asset }] : item.asset));
     dispatch(change(form, 'type', item.type));
   }
 
@@ -85,6 +86,12 @@ class Programming extends Component {
     dispatch(reset(form));
 
     this.setState({ addItem: true, editable: data.content.length, activeKey: data.content.length });
+  }
+
+  handleTypeChange = (e) => {
+    const { dispatch, form } = this.props;
+
+    dispatch(change(form, 'asset', ''));
   }
 
   renderChildrenItem = (option) => {
@@ -97,7 +104,7 @@ class Programming extends Component {
 
   render() {
     const { activeKey, editable, addItem } = this.state;
-    const { data, currentAssetValue } = this.props;
+    const { data, currentAssetValue, currentTypeValue } = this.props;
 
     let groupItems = [];
     if (addItem) {
@@ -107,6 +114,8 @@ class Programming extends Component {
     }
 
     const showPreview = _.get(currentAssetValue, '[0].asset') ? false : true;
+
+    const assetTypes = [{ value: 'icon', label: 'Icon' }, { value: 'image', label: 'Image' }];
 
     return (
       <ListGroupItem>
@@ -132,8 +141,25 @@ class Programming extends Component {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={`${idx}`}>
                   <Card.Body>
-                    {item.type === 'image' ? (
-                      editable === idx ? (
+                    <div className="text-center">
+                      {editable === idx ? (
+                        <Field
+                          name="type"
+                          options={assetTypes}
+                          inline
+                          onChange={this.handleTypeChange}
+                          component={InputRadio}
+                          validate={[required]}
+                        />
+                      ) : (
+                        <h3 className="mt-0" style={{ textTransform: 'capitalize' }}>
+                          {item.type}
+                        </h3>
+                      )}
+                    </div>
+
+                    {editable === idx ? (
+                      currentTypeValue === 'image' ? (
                         <Fragment>
                           <div className="text-center">
                             {!showPreview && <Image src={`data:image/svg+xml;base64,${item.asset}`} fluid />}
@@ -146,38 +172,28 @@ class Programming extends Component {
                           />
                         </Fragment>
                       ) : (
+                        <Field
+                          name="asset"
+                          defaultValue={item.asset}
+                          valueProperty="title"
+                          filterBy="iconName"
+                          renderMenuItem={this.renderChildrenItem}
+                          labelKey="iconName"
+                          options={iconsArray}
+                          placeholder="Choose an icon..."
+                          component={InputTypeAhead}
+                          validate={[required]}
+                        />
+                      )
+                    ) : (
+                      item.type === 'image' ? (
                         <div className="text-center">
                           <Image src={`data:image/svg+xml;base64,${item.asset}`} fluid />
                         </div>
-                      )
-                    ) : (
-                      editable === idx ? (
-                        <Typeahead
-                          id="iconsTypeAhead"
-                          onChange={(e) => console.log(e[0])}
-                          defaultSelected={iconsArray.filter(icon => icon.title === item.asset)}
-                          selectHintOnEnter
-                          filterBy={['iconName']}
-                          renderMenuItemChildren={this.renderChildrenItem}
-                          labelKey="iconName"
-                          positionFixed
-                          options={iconsArray}
-                          placeholder="Choose an icon..."
-                        />
                       ) : (
-                        <Typeahead
-                          id="iconsTypeAhead"
-                          disabled
-                          onChange={(e) => console.log(e[0])}
-                          defaultSelected={iconsArray.filter(icon => icon.title === item.asset)}
-                          selectHintOnEnter
-                          filterBy={['iconName']}
-                          renderMenuItemChildren={this.renderChildrenItem}
-                          labelKey="iconName"
-                          positionFixed
-                          options={iconsArray}
-                          placeholder="Choose an icon..."
-                        />
+                        <div className="text-center">
+                          <FontAwesomeIcon icon={iconsUnion[item.asset]} size="4x" />
+                        </div>
                       )
                     )}
 
@@ -218,6 +234,7 @@ Programming = reduxForm()(Programming);
 
 const mapStateToProps = (state, ownProps) => ({
   currentAssetValue: formValueSelector(ownProps.form)(state, 'asset'),
+  currentTypeValue: formValueSelector(ownProps.form)(state, 'type'),
 });
 
 export default connect(mapStateToProps)(Programming);
