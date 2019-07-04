@@ -7,6 +7,7 @@ const api = axios.create({
   timeout: 20000,
 });
 
+// SET THE TOKEN EN EVERY REQUEST
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('token') || sessionStorage.getItem('token');
   config.headers.Authorization = token ? `Bearer ${token}` : '';

@@ -267,3 +267,90 @@ export const fetchSkills = () => {
     }
   }
 };
+
+const setDeleteSkill = (_id, groupId) => ({
+  type: types.DELETE_DASHBOARD_SKILL_ITEM,
+  payload: {
+    _id,
+    groupId,
+  },
+});
+
+export const deleteSkill = (_id, groupId) => {
+  return async dispatch => {
+    try {
+      dispatch(setLoading(true));
+
+      await axios.delete(`information/skills/${_id}`);
+
+      dispatch(setDeleteSkill(_id, groupId));
+      dispatch(setLoading(false));
+    } catch(e) {
+      dispatch(setLoading(false));
+      let errorMessage = 'Unable to delete skill item';
+      if (e.response && e.response.data && e.response.data.error) {
+        errorMessage = e.response.data.error;
+      }
+
+      toast.error(errorMessage);
+    }
+  };
+}
+
+const setEditSkill = (data) => ({
+  type: types.EDIT_DASHBOARD_SKILL_ITEM,
+  payload: {
+    data,
+  },
+});
+
+export const editSkill = (data, _id, callback) => {
+  return async dispatch => {
+    try {
+      dispatch(setLoading(true));
+
+      await axios.patch(`information/skills/${_id}`, data);
+
+      dispatch(setEditSkill({ ...data, _id }));
+      dispatch(setLoading(false));
+      callback();
+    } catch(e) {
+      dispatch(setLoading(false));
+      let errorMessage = 'Unable to edit skill item';
+      if (e.response && e.response.data && e.response.data.error) {
+        errorMessage = e.response.data.error;
+      }
+
+      toast.error(errorMessage);
+    }
+  };
+};
+
+const setCreateSkill = (data) => ({
+  type: types.CREATE_DASHBOARD_SKILL_ITEM,
+  payload: {
+    data,
+  },
+});
+
+export const createSkill = (payload, callback) => {
+  return async dispatch => {
+    try {
+      dispatch(setLoading(true));
+
+      const { data } = await axios.post(`information/skills`, payload);
+
+      dispatch(setCreateSkill(data));
+      dispatch(setLoading(false));
+      callback();
+    } catch(e) {
+      dispatch(setLoading(false));
+      let errorMessage = 'Unable to create skill item';
+      if (e.response && e.response.data && e.response.data.error) {
+        errorMessage = e.response.data.error;
+      }
+
+      toast.error(errorMessage);
+    }
+  };
+};

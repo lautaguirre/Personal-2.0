@@ -82,6 +82,18 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         languages: [ ...state.languages, action.payload.data ],
       };
+
+    case types.DELETE_DASHBOARD_SKILL_ITEM:
+      return {
+        ...state,
+        skills: state.skills.map(skillGroup => {
+          if (skillGroup._id === action.payload.groupId) {
+            return { ...skillGroup, content: skillGroup.content.filter(skill => skill._id !== action.payload._id) };
+          }
+
+          return skillGroup;
+        }),
+      };
     default:
       return state;
   }

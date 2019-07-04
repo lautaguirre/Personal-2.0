@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Accordion, Card, Button, ListGroupItem, Image } from 'react-bootstrap';
 import { reduxForm, reset, change, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 import Swal from 'sweetalert2';
@@ -13,6 +14,8 @@ import { required, svgOnly, maxLength120 } from '../../../../lib/validations';
 import InputText from '../../../common/InputText/InputText';
 import InputRadio from '../../../common/InputRadio/InputRadio';
 import InputTypeAhead from '../../../common/InputTypeAhead/InputTypeAhead';
+
+import * as actions from '../../actions/dashboardActions';
 
 const iconsUnion = { ...{...icons}.fas, ...{...brandIcons}.fab };
 const iconsArray = _.map(iconsUnion, (icon, key) => {
@@ -58,7 +61,6 @@ class Programming extends Component {
   }
 
   handleSave = (data, _id, groupId) => {
-    return console.log({ data, _id, groupId});
     if (_id === 'add') {
       this.props.actions.createSkill(data, groupId, () => {
         this.setState({ editable: null, addItem: false });
@@ -237,4 +239,8 @@ const mapStateToProps = (state, ownProps) => ({
   currentTypeValue: formValueSelector(ownProps.form)(state, 'type'),
 });
 
-export default connect(mapStateToProps)(Programming);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Programming);
