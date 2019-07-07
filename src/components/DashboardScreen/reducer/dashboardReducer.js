@@ -112,6 +112,20 @@ export default (state = INITIAL_STATE, action) => {
           return skillGroup;
         }),
       };
+    case types.CREATE_DASHBOARD_SKILL_ITEM:
+      return {
+        ...state,
+        skills: state.skills.map(skillGroup => {
+          if (skillGroup._id === action.payload.groupId) {
+            return {
+              ...skillGroup,
+              content: [ ...skillGroup.content, action.payload.data ],
+            }
+          }
+
+          return skillGroup;
+        }),
+      };
     default:
       return state;
   }

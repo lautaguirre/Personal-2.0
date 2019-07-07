@@ -117,8 +117,6 @@ class Programming extends Component {
 
     const showPreview = currentAssetValue ? ((currentAssetValue instanceof File) ? true : false) : true;
 
-    console.log(currentAssetValue);
-
     const assetTypes = [{ value: 'icon', label: 'Icon' }, { value: 'image', label: 'Image' }];
 
     return (

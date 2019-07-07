@@ -339,21 +339,36 @@ export const editSkill = (data, _id, groupId, callback) => {
   };
 };
 
-const setCreateSkill = (data) => ({
+const setCreateSkill = (data, groupId) => ({
   type: types.CREATE_DASHBOARD_SKILL_ITEM,
   payload: {
     data,
+    groupId,
   },
 });
 
-export const createSkill = (payload, callback) => {
+export const createSkill = (data, groupId, callback) => {
   return async dispatch => {
     try {
       dispatch(setLoading(true));
 
-      const { data } = await axios.post(`information/skills`, payload);
+      let payload;
+      if (data.asset instanceof File) {
+        const formData = new FormData();
+        for (const dataItem in data) {
+          formData.append(dataItem, data[dataItem]);
+        }
 
-      dispatch(setCreateSkill(data));
+        formData.append('groupId' ,groupId);
+
+        payload = formData;
+      } else {
+        payload = { ...data, groupId };
+      }
+
+      const response = await axios.post(`information/skills`, payload);
+
+      dispatch(setCreateSkill(response.data, groupId));
       dispatch(setLoading(false));
       callback();
     } catch(e) {
