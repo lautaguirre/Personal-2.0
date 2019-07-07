@@ -33,5 +33,4 @@ const mapDispatchToProps = dispatch => ({
   loginActions: bindActionCreators(loginActions, dispatch),
 });
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenContainer);

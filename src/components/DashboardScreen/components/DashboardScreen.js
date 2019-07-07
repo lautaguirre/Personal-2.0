@@ -1,35 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Col, Container, ListGroup, Row, Spinner } from 'react-bootstrap';
+import { Col, Container, ListGroup, Row } from 'react-bootstrap';
 
 import About from './About/About';
 import Languages from './Languages/Languages';
 import Portfolio from './Portfolio/Portfolio';
 import Programming from './Programming/Programming';
 
-import * as actions from '../actions/dashboardActions';
-
 class DashboardScreen extends Component {
-  componentDidMount() {
-    const { actions } = this.props;
-
-    actions.fetchAbout();
-    actions.fetchLanguages();
-    actions.fetchPortfolio();
-    actions.fetchSkills();
-  }
-
   render() {
     const { about, languages, portfolio, skills } = this.props.dashboard;
-
-    if (!(about && languages && portfolio && skills)) {
-      return (
-        <div className="center pt-3">
-          <Spinner animation="grow" />
-        </div>
-      );
-    }
 
     return (
       <Container fluid>
@@ -65,12 +44,4 @@ class DashboardScreen extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  dashboard: state.dashboard,
-});
-
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen);
+export default DashboardScreen;

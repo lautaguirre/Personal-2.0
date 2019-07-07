@@ -41,13 +41,13 @@ export const alphanumeric = value => (
 );
 
 export const pngOnly = value => (
-  value && value[0] && value[0].type !== 'image/png'
+  value && value.type !== 'image/png'
     ? 'Only PNG allowed'
     : undefined
 );
 
 export const svgOnly = value => (
-  value && value[0] && value[0].type !== 'image/svg+xml'
+  value && value.type !== 'image/svg+xml'
     ? 'Only SVG allowed'
     : undefined
 );

@@ -297,21 +297,34 @@ export const deleteSkill = (_id, groupId) => {
   };
 }
 
-const setEditSkill = (data) => ({
+const setEditSkill = (data, groupId) => ({
   type: types.EDIT_DASHBOARD_SKILL_ITEM,
   payload: {
     data,
+    groupId,
   },
 });
 
-export const editSkill = (data, _id, callback) => {
+export const editSkill = (data, _id, groupId, callback) => {
   return async dispatch => {
     try {
       dispatch(setLoading(true));
 
-      await axios.patch(`information/skills/${_id}`, data);
+      let payload;
+      if (data.asset instanceof File) {
+        const formData = new FormData();
+        for (const dataItem in data) {
+          formData.append(dataItem, data[dataItem]);
+        }
 
-      dispatch(setEditSkill({ ...data, _id }));
+        payload = formData;
+      } else {
+        payload = { ...data };
+      }
+
+      const response = await axios.patch(`information/skills/${_id}`, payload);
+
+      dispatch(setEditSkill(response.data, groupId));
       dispatch(setLoading(false));
       callback();
     } catch(e) {

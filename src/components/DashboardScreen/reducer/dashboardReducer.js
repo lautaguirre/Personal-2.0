@@ -94,6 +94,24 @@ export default (state = INITIAL_STATE, action) => {
           return skillGroup;
         }),
       };
+    case types.EDIT_DASHBOARD_SKILL_ITEM:
+      return {
+        ...state,
+        skills: state.skills.map(skillGroup => {
+          if (skillGroup._id === action.payload.groupId) {
+            return {
+              ...skillGroup,
+              content: skillGroup.content.map(skill => {
+                if (skill._id === action.payload.data._id) return action.payload.data;
+
+                return skill;
+              }),
+            }
+          }
+
+          return skillGroup;
+        }),
+      };
     default:
       return state;
   }

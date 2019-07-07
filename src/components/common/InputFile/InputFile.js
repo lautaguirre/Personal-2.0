@@ -15,21 +15,18 @@ class InputFile extends Component {
 
   onChange = (e) => {
     const { onChange } = this.props.input;
-    const { preview } = this.props;
 
-    if (preview) {
-      if (e.target.files[0]) {
-        this.setState({
-          file: URL.createObjectURL(e.target.files[0]),
-        });
-      } else {
-        this.setState({
-          file: null,
-        });
-      }
+    if (e.target.files[0]) {
+      this.setState({
+        file: URL.createObjectURL(e.target.files[0]),
+      });
+    } else {
+      this.setState({
+        file: null,
+      });
     }
 
-    if (onChange) onChange(e);
+    if (onChange) onChange(e.target.files[0] ? e.target.files[0] : '');
   }
 
   render() {
@@ -51,15 +48,14 @@ class InputFile extends Component {
     return (
       <Form.Group style={groupStyle} className="custom-input-file-container">
         {preview && !multiple && (
-          <div className="preview-container">
+          <label className="preview-container" htmlFor={inputProps.name}>
             <Image src={file || imagePlaceholder} height={80} width={80} fluid />
-          </div>
+          </label>
         )}
         <Form.Label htmlFor={inputProps.name}>{label}</Form.Label>
         <div className="input-group">
           <div className="custom-file">
             <input
-              {...inputProps}
               disabled={disabled}
               type="file"
               onChange={this.onChange}
@@ -68,7 +64,7 @@ class InputFile extends Component {
               id={inputProps.name}
             />
             <label className="custom-file-label" htmlFor={inputProps.name}>
-              {(this.props.input.value[0] && this.props.input.value[0].name) || 'Choose file'}
+              {(this.props.input.value && this.props.input.value.name) || 'Choose file'}
             </label>
           </div>
         </div>

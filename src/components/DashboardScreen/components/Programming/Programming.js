@@ -78,7 +78,7 @@ class Programming extends Component {
     this.setState({ editable: idx, addItem: false });
 
     dispatch(change(form, 'description', item.description));
-    dispatch(change(form, 'asset', item.type === 'image' ? [{ type: 'image/svg+xml', asset: item.asset }] : item.asset));
+    dispatch(change(form, 'asset', item.type === 'image' ? { type: 'image/svg+xml', data: item.asset } : item.asset));
     dispatch(change(form, 'type', item.type));
   }
 
@@ -115,7 +115,9 @@ class Programming extends Component {
       groupItems = [ ...data.content ];
     }
 
-    const showPreview = _.get(currentAssetValue, '[0].asset') ? false : true;
+    const showPreview = currentAssetValue ? ((currentAssetValue instanceof File) ? true : false) : true;
+
+    console.log(currentAssetValue);
 
     const assetTypes = [{ value: 'icon', label: 'Icon' }, { value: 'image', label: 'Image' }];
 
@@ -164,7 +166,7 @@ class Programming extends Component {
                       currentTypeValue === 'image' ? (
                         <Fragment>
                           <div className="text-center">
-                            {!showPreview && <Image src={`data:image/svg+xml;base64,${item.asset}`} fluid />}
+                            {!showPreview && <Image src={`data:image/svg+xml;base64,${item.asset}`} width={80} height={80} fluid />}
                           </div>
                           <Field
                             preview={showPreview}
@@ -190,7 +192,7 @@ class Programming extends Component {
                     ) : (
                       item.type === 'image' ? (
                         <div className="text-center">
-                          <Image src={`data:image/svg+xml;base64,${item.asset}`} fluid />
+                          <Image src={`data:image/svg+xml;base64,${item.asset}`} width={80} height={80} fluid />
                         </div>
                       ) : (
                         <div className="text-center">
