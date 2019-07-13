@@ -25,17 +25,17 @@ class DashboardScreen extends Component {
             <ListGroup className="shadow">
               <Languages languages={languages} />
             </ListGroup>
+
+            <h2>Skills</h2>
+            <ListGroup className="shadow">
+              {skills.map((item, idx) => <Programming form={`SkillsForm-${idx}`} key={item._id} data={item} />)}
+            </ListGroup>
           </Col>
 
           <Col xs={12} md={4}>
             <h2>Portfolio</h2>
             <ListGroup className="shadow">
               <Portfolio data={portfolio} />
-            </ListGroup>
-
-            <h2>Skills</h2>
-            <ListGroup className="shadow">
-              {skills.map((item, idx) => <Programming form={`SkillsForm-${idx}`} key={item._id} data={item} />)}
             </ListGroup>
           </Col>
         </Row>

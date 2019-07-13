@@ -39,6 +39,8 @@ class InputFile extends Component {
       disabled,
       groupStyle,
       preview,
+      previewHeight,
+      previewWidth,
       multiple,
       meta: { error, touched, dirty },
     } = this.props;
@@ -49,7 +51,7 @@ class InputFile extends Component {
       <Form.Group style={groupStyle} className="custom-input-file-container">
         {preview && !multiple && (
           <label className="preview-container" htmlFor={inputProps.name}>
-            <Image src={file || imagePlaceholder} height={80} width={80} fluid />
+            <Image src={file || imagePlaceholder} height={previewHeight || 80} width={previewWidth || 80} fluid />
           </label>
         )}
         <Form.Label htmlFor={inputProps.name}>{label}</Form.Label>

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { Accordion, Card, Button, Form, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Accordion, Card, Button, ListGroup, ListGroupItem, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { change, reset, Field, reduxForm } from 'redux-form';
+import { change, reset, Field, reduxForm, FieldArray, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
 import Swal from 'sweetalert2';
 
 import * as icons from '@fortawesome/free-solid-svg-icons';
 
 import InputText from '../../../common/InputText/InputText';
+import InputFile from '../../../common/InputFile/InputFile';
 
-import { required, maxLength120, maxLength1024 } from '../../../../lib/validations';
+import { required, maxLength120, maxLength1024, url, pngOnly } from '../../../../lib/validations';
 
 class Portfolio extends Component {
   constructor(props) {
@@ -49,6 +51,7 @@ class Portfolio extends Component {
   }
 
   handleSave = (data, _id) => {
+    return console.log(data);
     if (_id === 'add') {
       this.props.actions.createPortfolio(data, () => {
         this.setState({ editable: null, addItem: false });
@@ -68,6 +71,8 @@ class Portfolio extends Component {
     dispatch(change(form, 'title', item.title));
     dispatch(change(form, 'description', item.description));
     dispatch(change(form, 'titleLink', item.titleLink));
+    dispatch(change(form, 'techStack', item.techStack));
+    dispatch(change(form, 'images', item.images));
   }
 
   handleAdd = () => {
@@ -78,9 +83,79 @@ class Portfolio extends Component {
     this.setState({ addItem: true, editable: data.content.length, activeKey: data.content.length });
   }
 
+  renderTech = ({ fields, meta: { error, submitFailed }}) => {
+    return (
+      <div className="mb-3">
+        <div className="text-center">
+          <h4>Tech Stack</h4>
+        </div>
+        {fields.map((techStack, index) => (
+          <div key={index} className="d-flex align-items-center mb-1">
+            <Field
+              name={`${techStack}.name`}
+              component={InputText}
+              groupStyle={{ width: '100%', marginBottom: 0 }}
+              validate={[required, maxLength120]}
+            />
+            <FontAwesomeIcon className="ml-3" icon={icons.faMinusCircle} style={{ cursor: 'pointer' }} onClick={() => fields.remove(index)} />
+          </div>
+        ))}
+        <div className="text-center">
+          <FontAwesomeIcon icon={icons.faPlusCircle} style={{ cursor: 'pointer' }} onClick={() => fields.push({})} />
+          {submitFailed && error && <span className="text-danger">{error}</span>}
+        </div>
+      </div>
+    );
+  }
+
+  renderImages = ({ fields, meta: { error, submitFailed }}) => {
+    const { currentImagesValue } = this.props;
+
+    return (
+      <div>
+        {fields.map((images, index) => {
+          const showPreview = currentImagesValue[index].asset ? ((currentImagesValue[index].asset instanceof File) ? true : false) : true;
+          const validations = showPreview ? [required, pngOnly] : [required];
+          return (
+            <ListGroup.Item key={index} variant="light">
+              <div className="text-center">
+                <Field
+                  name={`${images}.name`}
+                  component={InputText}
+                  validate={[required, maxLength120]}
+                />
+              </div>
+              {!showPreview && <Image src={`data:image/png;base64,${currentImagesValue[index].asset}`} height={150} fluid />}
+              <Field
+                preview={showPreview}
+                name={`${images}.asset`}
+                component={InputFile}
+                previewHeight={150}
+                previewWidth={'auto'}
+                validate={validations}
+              />
+              <div className="text-center">
+                <Button variant="outline-danger" size="sm" onClick={() => fields.remove(index)}>
+                  Delete Image
+                </Button>
+              </div>
+            </ListGroup.Item>
+          );
+        })}
+        <div className="text-center mt-2">
+          <Button variant="outline-success" size="sm" onClick={() => fields.push({})}>
+            Add Image
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const { activeKey, editable, addItem } = this.state;
     const { data } = this.props;
+
+    console.log(data);
 
     return (
       <ListGroupItem>
@@ -109,9 +184,7 @@ class Portfolio extends Component {
                       <Field
                         name="titleLink"
                         component={InputText}
-                        groupStyle={{ width: '100%' }}
-                        onClick={e => e.stopPropagation()}
-                        validate={[required, maxLength120]}
+                        validate={[required, maxLength120, url]}
                       />
                     ) : <p>{item.titleLink}</p>}
 
@@ -121,20 +194,12 @@ class Portfolio extends Component {
                         renderAs="textarea"
                         rows="5"
                         component={InputText}
-                        groupStyle={{ width: '100%' }}
-                        onClick={e => e.stopPropagation()}
                         validate={[required, maxLength1024]}
                       />
                     ) : item.description}
 
                     {editable === idx ? (
-                      <ul>
-                        {item.techStack.map((tech) => (
-                          <li key={tech._id}>
-                            {tech.name}: {tech.description}
-                          </li>
-                        ))}
-                      </ul>
+                      <FieldArray name={'techStack'} component={this.renderTech} />
                     ) : (
                       <ul>
                         {item.techStack.map((tech) => (
@@ -145,13 +210,22 @@ class Portfolio extends Component {
                       </ul>
                     )}
 
-                    <ListGroup>
-                      {item.images.map(image => (
-                        <ListGroup.Item key={image} action variant="light">
-                          {image}
-                        </ListGroup.Item>
-                      ))}
-                    </ListGroup>
+                    {editable === idx ? (
+                      <ListGroup>
+                        <FieldArray name={'images'} component={this.renderImages} />
+                      </ListGroup>
+                    ) : (
+                      <ListGroup>
+                        {item.images.map(image => (
+                          <ListGroup.Item key={image._id} variant="light">
+                            <div className="text-center">
+                              {image.name}
+                            </div>
+                            <Image src={`data:image/png;base64,${image.asset}`} height={150} fluid />
+                          </ListGroup.Item>
+                        ))}
+                      </ListGroup>
+                    )}
 
                     {editable === idx ? (
                       <div className="d-flex align-items-center justify-content-evenly mt-3">
@@ -193,4 +267,8 @@ Portfolio = reduxForm({
   form: 'PortfolioForm',
 })(Portfolio);
 
-export default Portfolio;
+const mapStateToProps = state => ({
+  currentImagesValue: formValueSelector('PortfolioForm')(state, 'images'),
+});
+
+export default connect(mapStateToProps)(Portfolio);

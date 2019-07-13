@@ -19,7 +19,7 @@ class InputText extends Component {
 
     return (
       <Form.Group style={groupStyle}>
-        <Form.Label htmlFor={input.name}>{label}</Form.Label>
+        {label && <Form.Label htmlFor={input.name}>{label}</Form.Label>}
         <Form.Control
           {...input}
           id={input.name}

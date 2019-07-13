@@ -31,7 +31,7 @@ class InputTypeAhead extends Component {
 
     return (
       <Form.Group style={groupStyle}>
-        <Form.Label htmlFor={input.name}>{label}</Form.Label>
+        {label && <Form.Label htmlFor={input.name}>{label}</Form.Label>}
         <Typeahead
           onChange={this.handleChange}
           id={input.name}
