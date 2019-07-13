@@ -57,7 +57,7 @@ class Programming extends Component {
       if (result.value) {
         this.props.actions.deleteSkill(id, groupId);
       }
-    })
+    });
   }
 
   handleSave = (data, _id, groupId) => {

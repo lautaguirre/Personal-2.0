@@ -6,6 +6,7 @@ const maxLength = max => (
   )
 );
 
+export const maxLength1024 = maxLength(1024);
 export const maxLength512 = maxLength(512);
 export const maxLength120 = maxLength(120);
 export const maxLength16 = maxLength(16);

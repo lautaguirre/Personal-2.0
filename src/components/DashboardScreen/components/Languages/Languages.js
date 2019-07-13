@@ -149,11 +149,13 @@ class Languages extends Component {
           );
         })}
 
-        <ListGroupItem>
-          <div className="center">
-            {!addItem && <Button variant="outline-success" onClick={() => this.handleAdd()}>Add Item</Button>}
-          </div>
-        </ListGroupItem>
+        {!addItem &&
+          <ListGroupItem>
+            <div className="center">
+              <Button variant="outline-success" onClick={() => this.handleAdd()}>Add Item</Button>
+            </div>
+          </ListGroupItem>
+        }
       </Fragment>
     );
   }
