@@ -9,14 +9,9 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+    // ABOUT
     case types.SET_DASHBOARD_ABOUT:
       return { ...state, about: action.payload };
-    case types.SET_DASHBOARD_LANGUAGES:
-      return { ...state, languages: action.payload };
-    case types.SET_DASHBOARD_PORTFOLIO:
-      return { ...state, portfolio: action.payload };
-    case types.SET_DASHBOARD_SKILLS:
-      return { ...state, skills: action.payload };
     case types.DELETE_DASHBOARD_ABOUT_ITEM:
       return {
         ...state,
@@ -61,6 +56,9 @@ export default (state = INITIAL_STATE, action) => {
         }),
       };
 
+    // LANGUAGE
+    case types.SET_DASHBOARD_LANGUAGES:
+      return { ...state, languages: action.payload };
     case types.DELETE_DASHBOARD_LANGUAGE_ITEM:
       return {
         ...state,
@@ -83,6 +81,28 @@ export default (state = INITIAL_STATE, action) => {
         languages: [ ...state.languages, action.payload.data ],
       };
 
+    // PORTFOLIO
+    case types.SET_DASHBOARD_PORTFOLIO:
+      return { ...state, portfolio: action.payload };
+    case types.DELETE_DASHBOARD_PORTFOLIO_ITEM:
+      return { ...state, portfolio: state.portfolio.filter(portfolio => portfolio._id !== action.payload._id) };
+    case types.EDIT_DASHBOARD_PORTFOLIO_ITEM:
+      return {
+        ...state,
+        portfolio: state.portfolio.map(portfolio => {
+          if (portfolio._id === action.payload.data._id) {
+            return action.payload.data;
+          }
+
+          return portfolio;
+        }),
+      };
+    case types.CREATE_DASHBOARD_PORTFOLIO_ITEM:
+      return { ...state, portfolio: [ ...state.portfolio, action.payload.data ] };
+
+    // SKILLS
+    case types.SET_DASHBOARD_SKILLS:
+      return { ...state, skills: action.payload };
     case types.DELETE_DASHBOARD_SKILL_ITEM:
       return {
         ...state,

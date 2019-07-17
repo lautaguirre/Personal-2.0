@@ -1,9 +1,11 @@
 import { toast } from 'react-toastify';
 
 import axios from '../../../lib/api';
+import { imagesArrayToBase64 } from '../../../lib/utils';
 import * as types from './types';
 import { setLoading } from '../../common/actions/commonActions';
 
+// ABOUT
 const setAbout = about => ({
   type: types.SET_DASHBOARD_ABOUT,
   payload: about,
@@ -115,6 +117,7 @@ export const createAbout = (payload, groupId, callback) => {
   };
 };
 
+// LANGUAGES
 const setLanguages = languages => ({
   type: types.SET_DASHBOARD_LANGUAGES,
   payload: languages,
@@ -223,6 +226,7 @@ export const createLanguage = (payload, callback) => {
   };
 };
 
+// PORTFOLIO
 const setPortfolio = portfolio => ({
   type: types.SET_DASHBOARD_PORTFOLIO,
   payload: portfolio,
@@ -245,7 +249,101 @@ export const fetchPortfolio = () => {
   }
 };
 
+const setDeletePortfolio = (_id) => ({
+  type: types.DELETE_DASHBOARD_PORTFOLIO_ITEM,
+  payload: {
+    _id,
+  },
+});
 
+export const deletePortfolio = (_id) => {
+  return async dispatch => {
+    try {
+      dispatch(setLoading(true));
+
+      await axios.delete(`information/portfolio/${_id}`);
+
+      dispatch(setDeletePortfolio(_id));
+      dispatch(setLoading(false));
+    } catch(e) {
+      dispatch(setLoading(false));
+      let errorMessage = 'Unable to delete portfolio item';
+      if (e.response && e.response.data && e.response.data.error) {
+        errorMessage = e.response.data.error;
+      }
+
+      toast.error(errorMessage);
+    }
+  };
+}
+
+const setEditPortfolio = (data) => ({
+  type: types.EDIT_DASHBOARD_PORTFOLIO_ITEM,
+  payload: {
+    data,
+  },
+});
+
+export const editPortfolio = (data, _id, callback) => {
+  return async dispatch => {
+    const { images, ...payload } = data;
+
+    const base64Images = await imagesArrayToBase64(images || []);
+
+    try {
+      dispatch(setLoading(true));
+
+      await axios.patch(`information/portfolio/${_id}`, { ...payload, images: base64Images });
+
+      dispatch(setEditPortfolio({ ...payload, images: base64Images, _id }));
+      dispatch(setLoading(false));
+      callback();
+    } catch(e) {
+      dispatch(setLoading(false));
+      let errorMessage = 'Unable to edit portfolio item';
+      if (e.response && e.response.data && e.response.data.error) {
+        errorMessage = e.response.data.error;
+      }
+
+      toast.error(errorMessage);
+    }
+  };
+};
+
+const setCreatePortfolio = (data) => ({
+  type: types.CREATE_DASHBOARD_PORTFOLIO_ITEM,
+  payload: {
+    data,
+  },
+});
+
+export const createPortfolio = (payload, callback) => {
+  return async dispatch => {
+    try {
+      const { images, ...payloadRest } = payload;
+
+      dispatch(setLoading(true));
+
+      const base64Images = await imagesArrayToBase64(images || []);
+
+      const { data } = await axios.post(`information/portfolio`, { ...payloadRest, images: base64Images });
+
+      dispatch(setCreatePortfolio(data));
+      dispatch(setLoading(false));
+      callback();
+    } catch(e) {
+      dispatch(setLoading(false));
+      let errorMessage = 'Unable to create portfolio item';
+      if (e.response && e.response.data && e.response.data.error) {
+        errorMessage = e.response.data.error;
+      }
+
+      toast.error(errorMessage);
+    }
+  };
+};
+
+// SKILLS
 const setSkills = skills => ({
   type: types.SET_DASHBOARD_SKILLS,
   payload: skills,

@@ -3,12 +3,15 @@ import { Accordion, Card, Button, ListGroup, ListGroupItem, Image } from 'react-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { change, reset, Field, reduxForm, FieldArray, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Swal from 'sweetalert2';
 
 import * as icons from '@fortawesome/free-solid-svg-icons';
 
 import InputText from '../../../common/InputText/InputText';
 import InputFile from '../../../common/InputFile/InputFile';
+
+import * as actions from '../../actions/dashboardActions';
 
 import { required, maxLength120, maxLength1024, url, pngOnly } from '../../../../lib/validations';
 
@@ -51,7 +54,6 @@ class Portfolio extends Component {
   }
 
   handleSave = (data, _id) => {
-    return console.log(data);
     if (_id === 'add') {
       this.props.actions.createPortfolio(data, () => {
         this.setState({ editable: null, addItem: false });
@@ -80,7 +82,7 @@ class Portfolio extends Component {
 
     dispatch(reset(form));
 
-    this.setState({ addItem: true, editable: data.content.length, activeKey: data.content.length });
+    this.setState({ addItem: true, editable: data.length, activeKey: data.length });
   }
 
   renderTech = ({ fields, meta: { error, submitFailed }}) => {
@@ -92,7 +94,7 @@ class Portfolio extends Component {
         {fields.map((techStack, index) => (
           <div key={index} className="d-flex align-items-center mb-1">
             <Field
-              name={`${techStack}.name`}
+              name={`${techStack}`}
               component={InputText}
               groupStyle={{ width: '100%', marginBottom: 0 }}
               validate={[required, maxLength120]}
@@ -101,7 +103,7 @@ class Portfolio extends Component {
           </div>
         ))}
         <div className="text-center">
-          <FontAwesomeIcon icon={icons.faPlusCircle} style={{ cursor: 'pointer' }} onClick={() => fields.push({})} />
+          <FontAwesomeIcon icon={icons.faPlusCircle} style={{ cursor: 'pointer' }} onClick={() => fields.push()} />
           {submitFailed && error && <span className="text-danger">{error}</span>}
         </div>
       </div>
@@ -114,21 +116,14 @@ class Portfolio extends Component {
     return (
       <div>
         {fields.map((images, index) => {
-          const showPreview = currentImagesValue[index].asset ? ((currentImagesValue[index].asset instanceof File) ? true : false) : true;
+          const showPreview = currentImagesValue[index] ? ((currentImagesValue[index] instanceof File) ? true : false) : true;
           const validations = showPreview ? [required, pngOnly] : [required];
           return (
             <ListGroup.Item key={index} variant="light">
-              <div className="text-center">
-                <Field
-                  name={`${images}.name`}
-                  component={InputText}
-                  validate={[required, maxLength120]}
-                />
-              </div>
-              {!showPreview && <Image src={`data:image/png;base64,${currentImagesValue[index].asset}`} height={150} fluid />}
+              {!showPreview && <Image src={`data:image/png;base64,${currentImagesValue[index]}`} height={150} fluid />}
               <Field
                 preview={showPreview}
-                name={`${images}.asset`}
+                name={`${images}`}
                 component={InputFile}
                 previewHeight={150}
                 previewWidth={'auto'}
@@ -143,7 +138,7 @@ class Portfolio extends Component {
           );
         })}
         <div className="text-center mt-2">
-          <Button variant="outline-success" size="sm" onClick={() => fields.push({})}>
+          <Button variant="outline-success" size="sm" onClick={() => fields.push()}>
             Add Image
           </Button>
         </div>
@@ -155,12 +150,17 @@ class Portfolio extends Component {
     const { activeKey, editable, addItem } = this.state;
     const { data } = this.props;
 
-    console.log(data);
+    let dataItems = [];
+    if (addItem) {
+      dataItems = [ ...data, { _id: 'add', images: [], title: '', titleLink: '', description: '', techStack: [] }];
+    } else {
+      dataItems = [ ...data ];
+    }
 
     return (
       <ListGroupItem>
         <Accordion activeKey={`${activeKey}`}>
-          {data.map((item, idx) => (
+          {dataItems.map((item, idx) => (
             <Card key={item._id}>
               <form onSubmit={this.props.handleSubmit(form => this.handleSave(form, item._id))}>
                 <Accordion.Toggle as={Card.Header} style={{ cursor: 'pointer' }} eventKey={`${idx}`} onClick={() => this.toggleAccordion(idx)}>
@@ -186,7 +186,13 @@ class Portfolio extends Component {
                         component={InputText}
                         validate={[required, maxLength120, url]}
                       />
-                    ) : <p>{item.titleLink}</p>}
+                    ) : (
+                      <div className="text-center mb-2">
+                        <a href={item.titleLink}>
+                          {item.titleLink}
+                        </a>
+                      </div>
+                    )}
 
                     {editable === idx ? (
                       <Field
@@ -202,9 +208,9 @@ class Portfolio extends Component {
                       <FieldArray name={'techStack'} component={this.renderTech} />
                     ) : (
                       <ul>
-                        {item.techStack.map((tech) => (
-                          <li key={tech._id}>
-                            {tech.name}: {tech.description}
+                        {item.techStack.map((tech, index) => (
+                          <li key={index}>
+                            {tech}
                           </li>
                         ))}
                       </ul>
@@ -216,12 +222,9 @@ class Portfolio extends Component {
                       </ListGroup>
                     ) : (
                       <ListGroup>
-                        {item.images.map(image => (
-                          <ListGroup.Item key={image._id} variant="light">
-                            <div className="text-center">
-                              {image.name}
-                            </div>
-                            <Image src={`data:image/png;base64,${image.asset}`} height={150} fluid />
+                        {item.images.map((image, index) => (
+                          <ListGroup.Item key={index} variant="light">
+                            <Image src={`data:image/png;base64,${image}`} height={150} fluid />
                           </ListGroup.Item>
                         ))}
                       </ListGroup>
@@ -271,4 +274,8 @@ const mapStateToProps = state => ({
   currentImagesValue: formValueSelector('PortfolioForm')(state, 'images'),
 });
 
-export default connect(mapStateToProps)(Portfolio);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);
