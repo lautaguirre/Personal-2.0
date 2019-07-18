@@ -37,7 +37,6 @@ class DashboardScreenContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.login,
   dashboard: state.dashboard,
 });
 

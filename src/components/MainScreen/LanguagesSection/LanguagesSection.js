@@ -8,24 +8,6 @@ import './LanguagesSection.scss';
 
 library.add(faComments, faChevronCircleRight);
 
-const languagesData = [
-  {
-    name: 'Spanish',
-    percentage: 100,
-    description: 'Native',
-  },
-  {
-    name: 'English',
-    percentage: 85,
-    description: 'First Certificate English',
-  },
-  {
-    name: 'Portuguese',
-    percentage: 85,
-    description: '2 years living in Brazil',
-  },
-];
-
 class LanguagesSection extends Component {
   renderLanguages = (language) => {
     return (
@@ -44,6 +26,8 @@ class LanguagesSection extends Component {
   }
 
   render() {
+    const { data } = this.props;
+
     return (
       <Container>
         <div id='languages' className='languages-section' >
@@ -58,7 +42,7 @@ class LanguagesSection extends Component {
 
           <Row className="center">
             <Col xs={12} >
-              {languagesData.map(this.renderLanguages)}
+              {data.map(this.renderLanguages)}
             </Col>
           </Row>
 

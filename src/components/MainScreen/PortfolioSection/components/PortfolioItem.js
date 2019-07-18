@@ -54,11 +54,10 @@ class PortfolioItem extends Component {
     this.setState({ readMore: true });
   }
 
-  renderTech = (tech) => {
+  renderTech = (tech, idx) => {
     return (
-      <li key={tech.name}>
-        <strong>{tech.description ? `${tech.name}:` : tech.name}</strong>&nbsp;
-        {tech.description}
+      <li key={idx}>
+        <strong>{tech}</strong>
       </li>
     );
   }
@@ -66,7 +65,7 @@ class PortfolioItem extends Component {
   renderCarouselItem = (image, idx) => {
     return (
       <Carousel.Item key={idx}>
-        <Image src={image} fluid />
+        <Image src={`data:image/png;base64,${image}`} fluid />
       </Carousel.Item>
     );
   }
