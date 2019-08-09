@@ -65,7 +65,7 @@ class PortfolioItem extends Component {
   renderCarouselItem = (image, idx) => {
     return (
       <Carousel.Item key={idx}>
-        <Image src={`data:image/png;base64,${image}`} fluid />
+        <Image src={image} fluid />
       </Carousel.Item>
     );
   }

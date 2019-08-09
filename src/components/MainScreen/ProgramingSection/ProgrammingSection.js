@@ -18,7 +18,7 @@ class ProgrammingSection extends Component {
         } else if (item.type === 'image') {
           return (
             <Col xs={6} md={3} className='center' key={item._id}>
-              <Image src={`data:image/svg+xml;base64,${item.asset}`} fluid />
+              <Image src={item.asset} fluid />
               <h4>{item.description}</h4>
             </Col>
           );
