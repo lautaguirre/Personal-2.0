@@ -120,7 +120,9 @@ class Portfolio extends Component {
           const validations = showPreview ? [required, pngOnly] : [required];
           return (
             <ListGroup.Item key={index} variant="light">
-              {!showPreview && <Image src={`data:image/png;base64,${currentImagesValue[index]}`} height={150} fluid />}
+              <div className="text-center">
+                {!showPreview && <Image src={currentImagesValue[index]} height={150} fluid />}
+              </div>
               <Field
                 preview={showPreview}
                 name={`${images}`}
@@ -223,8 +225,8 @@ class Portfolio extends Component {
                     ) : (
                       <ListGroup>
                         {item.images.map((image, index) => (
-                          <ListGroup.Item key={index} variant="light">
-                            <Image src={`data:image/png;base64,${image}`} height={150} fluid />
+                          <ListGroup.Item key={index} variant="light" className="text-center">
+                            <Image src={image} height={150} fluid />
                           </ListGroup.Item>
                         ))}
                       </ListGroup>

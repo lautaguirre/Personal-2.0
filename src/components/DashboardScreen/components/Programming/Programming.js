@@ -164,7 +164,7 @@ class Programming extends Component {
                       currentTypeValue === 'image' ? (
                         <Fragment>
                           <div className="text-center">
-                            {!showPreview && <Image src={`data:image/svg+xml;base64,${item.asset}`} width={80} height={80} fluid />}
+                            {!showPreview && <Image src={item.asset} width={80} height={80} fluid />}
                           </div>
                           <Field
                             preview={showPreview}
@@ -190,7 +190,7 @@ class Programming extends Component {
                     ) : (
                       item.type === 'image' ? (
                         <div className="text-center">
-                          <Image src={`data:image/svg+xml;base64,${item.asset}`} width={80} height={80} fluid />
+                          <Image src={item.asset} width={80} height={80} fluid />
                         </div>
                       ) : (
                         <div className="text-center">

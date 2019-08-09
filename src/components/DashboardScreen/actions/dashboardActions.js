@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
 
 import axios from '../../../lib/api';
-import { imagesArrayToBase64 } from '../../../lib/utils';
 import * as types from './types';
 import { setLoading } from '../../common/actions/commonActions';
 
@@ -284,18 +283,25 @@ const setEditPortfolio = (data) => ({
   },
 });
 
-export const editPortfolio = (data, _id, callback) => {
+export const editPortfolio = (payload, _id, callback) => {
   return async dispatch => {
-    const { images, ...payload } = data;
-
-    const base64Images = await imagesArrayToBase64(images || []);
+    const formData = new FormData();
+    for (const dataItem in payload) {
+      if (Array.isArray(payload[dataItem])) {
+        payload[dataItem].forEach(element => {
+          formData.append(dataItem, element);
+        });
+      } else {
+        formData.append(dataItem, payload[dataItem]);
+      }
+    }
 
     try {
       dispatch(setLoading(true));
 
-      await axios.patch(`information/portfolio/${_id}`, { ...payload, images: base64Images });
+      const { data } = await axios.patch(`information/portfolio/${_id}`, formData);
 
-      dispatch(setEditPortfolio({ ...payload, images: base64Images, _id }));
+      dispatch(setEditPortfolio({ ...data, _id }));
       dispatch(setLoading(false));
       callback();
     } catch(e) {
@@ -319,14 +325,21 @@ const setCreatePortfolio = (data) => ({
 
 export const createPortfolio = (payload, callback) => {
   return async dispatch => {
-    try {
-      const { images, ...payloadRest } = payload;
+    const formData = new FormData();
+    for (const dataItem in payload) {
+      if (Array.isArray(payload[dataItem])) {
+        payload[dataItem].forEach(element => {
+          formData.append(dataItem, element);
+        });
+      } else {
+        formData.append(dataItem, payload[dataItem]);
+      }
+    }
 
+    try {
       dispatch(setLoading(true));
 
-      const base64Images = await imagesArrayToBase64(images || []);
-
-      const { data } = await axios.post(`information/portfolio`, { ...payloadRest, images: base64Images });
+      const { data } = await axios.post(`information/portfolio`, formData);
 
       dispatch(setCreatePortfolio(data));
       dispatch(setLoading(false));
@@ -408,19 +421,16 @@ export const editSkill = (data, _id, groupId, callback) => {
     try {
       dispatch(setLoading(true));
 
-      let payload;
-      if (data.asset instanceof File) {
-        const formData = new FormData();
-        for (const dataItem in data) {
+      const formData = new FormData();
+      for (const dataItem in data) {
+        if (data[dataItem].data) {
+          formData.append(dataItem, data[dataItem].data);
+        } else {
           formData.append(dataItem, data[dataItem]);
         }
-
-        payload = formData;
-      } else {
-        payload = { ...data };
       }
 
-      const response = await axios.patch(`information/skills/${_id}`, payload);
+      const response = await axios.patch(`information/skills/${_id}`, formData);
 
       dispatch(setEditSkill(response.data, groupId));
       dispatch(setLoading(false));
@@ -450,21 +460,13 @@ export const createSkill = (data, groupId, callback) => {
     try {
       dispatch(setLoading(true));
 
-      let payload;
-      if (data.asset instanceof File) {
-        const formData = new FormData();
-        for (const dataItem in data) {
-          formData.append(dataItem, data[dataItem]);
-        }
-
-        formData.append('groupId' ,groupId);
-
-        payload = formData;
-      } else {
-        payload = { ...data, groupId };
+      const formData = new FormData();
+      formData.append('groupId' ,groupId);
+      for (const dataItem in data) {
+        formData.append(dataItem, data[dataItem]);
       }
 
-      const response = await axios.post(`information/skills`, payload);
+      const response = await axios.post(`information/skills`, formData);
 
       dispatch(setCreateSkill(response.data, groupId));
       dispatch(setLoading(false));
