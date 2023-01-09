@@ -42,6 +42,8 @@ export const NavigationMenuLink = styled(NavigationMenu.Link)`
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.darkerGrey};
 
+  transition: background-color 200ms;
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.lightGrey};
   }
