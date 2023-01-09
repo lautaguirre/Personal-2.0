@@ -32,11 +32,8 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(hydrate, (state, action) => {
-      return {
-        ...state,
-        ...action.payload.auth,
-      };
+    builder.addCase(hydrate, (_, action) => {
+      return action.payload.auth;
     });
   },
 });

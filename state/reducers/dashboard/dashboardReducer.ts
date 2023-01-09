@@ -215,11 +215,8 @@ export const dashboardSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(hydrate, (state, action) => {
-      return {
-        ...state,
-        ...action.payload.dashboard,
-      };
+    builder.addCase(hydrate, (_, action) => {
+      return action.payload.dashboard;
     });
   },
 });

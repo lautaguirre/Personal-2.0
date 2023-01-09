@@ -24,11 +24,8 @@ export const commonSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(hydrate, (state, action) => {
-      return {
-        ...state,
-        ...action.payload.common,
-      };
+    builder.addCase(hydrate, (_, action) => {
+      return action.payload.common;
     });
   },
 });
