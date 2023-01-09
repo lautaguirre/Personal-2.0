@@ -1,4 +1,12 @@
 import { DefaultTheme } from "styled-components";
+import {
+  boldFont,
+  demiFont,
+  heavyFont,
+  lightFont,
+  mediumFont,
+  regularFont,
+} from "./fonts";
 
 export const theme: DefaultTheme = {
   colors: {
@@ -36,12 +44,12 @@ export const theme: DefaultTheme = {
     formPaddingHorizontal: "40px",
   },
   fonts: {
-    bold: "AvenirNextLTPro-Bold",
-    demi: "AvenirNextLTPro-Demi",
-    heavy: "AvenirNextLTPro-Heavy",
-    light: "AvenirNextLTPro-Light",
-    medium: "AvenirNextLTPro-Medium",
-    regular: "AvenirNextLTPro-Regular",
+    bold: boldFont.style.fontFamily,
+    demi: demiFont.style.fontFamily,
+    heavy: heavyFont.style.fontFamily,
+    light: lightFont.style.fontFamily,
+    medium: mediumFont.style.fontFamily,
+    regular: regularFont.style.fontFamily,
   },
   constants: {
     navBarHeight: "60px",

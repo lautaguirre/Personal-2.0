@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import { fonts } from "@/styles/fonts";
 
 export const GlobalStyle = createGlobalStyle`
-  ${fonts}
-
   * {
     box-sizing: border-box;
     padding: 0;

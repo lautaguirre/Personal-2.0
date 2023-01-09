@@ -1,51 +1,20 @@
-import { css } from "styled-components";
+import localFont from "@next/font/local";
 
-export const fonts = css`
-  @font-face {
-    font-family: "AvenirNextLTPro-Bold";
-    src: url("/fonts/AvenirNextLTPro-Bold.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "AvenirNextLTPro-Demi";
-    src: url("/fonts/AvenirNextLTPro-Demi.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "AvenirNextLTPro-Heavy";
-    src: url("/fonts/AvenirNextLTPro-Heavy.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "AvenirNextLTPro-Light";
-    src: url("/fonts/AvenirNextLTPro-Light.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "AvenirNextLTPro-Medium";
-    src: url("/fonts/AvenirNextLTPro-Medium.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "AvenirNextLTPro-Regular";
-    src: url("/fonts/AvenirNextLTPro-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-`;
+export const boldFont = localFont({
+  src: "../assets/fonts/AvenirNextLTPro-Bold.ttf",
+});
+export const demiFont = localFont({
+  src: "../assets/fonts/AvenirNextLTPro-Demi.ttf",
+});
+export const heavyFont = localFont({
+  src: "../assets/fonts/AvenirNextLTPro-Heavy.ttf",
+});
+export const lightFont = localFont({
+  src: "../assets/fonts/AvenirNextLTPro-Light.ttf",
+});
+export const mediumFont = localFont({
+  src: "../assets/fonts/AvenirNextLTPro-Medium.ttf",
+});
+export const regularFont = localFont({
+  src: "../assets/fonts/AvenirNextLTPro-Regular.ttf",
+});

@@ -12,48 +12,6 @@ const MyDocument = () => {
     <Html lang="en">
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link
-          rel="preload"
-          href="/fonts/AvenirNextLTPro-Bold.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/AvenirNextLTPro-Demi.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/AvenirNextLTPro-Heavy.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/AvenirNextLTPro-Light.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/AvenirNextLTPro-Medium.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/AvenirNextLTPro-Regular.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin=""
-        />
       </Head>
 
       <body>

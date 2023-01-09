@@ -6,7 +6,7 @@ import { wrapper } from "@/state/store";
 import NavigationBar from "@/components/common/NavigationBar/NavigationBar";
 import Loader from "@/components/common/Loader/Loader";
 import { GlobalStyle } from "@/components/common/GlobalStyles/GlobalStyles";
-import { theme } from "@/lib/theme";
+import { theme } from "@/styles/theme";
 
 // TODOS:
 // Replace toastify for radix ui primitive

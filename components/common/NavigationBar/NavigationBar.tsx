@@ -37,7 +37,7 @@ const NavigationBar = () => {
           <S.NavigationMenuLink asChild>
             <Link href="/#about" scroll={false}>
               <Container display="flex" alignItems="center" height="100%">
-                <S.NavItemText>About</S.NavItemText>&nbsp;
+                <S.NavItemText>About&nbsp;</S.NavItemText>
                 <IdentificationIcon
                   color={colors.black}
                   width={24}
@@ -52,7 +52,7 @@ const NavigationBar = () => {
           <S.NavigationMenuLink asChild>
             <Link href="/#portfolio" scroll={false}>
               <Container display="flex" alignItems="center" height="100%">
-                <S.NavItemText>Portfolio</S.NavItemText>&nbsp;
+                <S.NavItemText>Portfolio&nbsp;</S.NavItemText>
                 <PhotoIcon color={colors.black} width={24} height={24} />
               </Container>
             </Link>
@@ -63,7 +63,7 @@ const NavigationBar = () => {
           <S.NavigationMenuLink asChild>
             <Link href="/#contact" scroll={false}>
               <Container display="flex" alignItems="center" height="100%">
-                <S.NavItemText>Contact</S.NavItemText>&nbsp;
+                <S.NavItemText>Contact&nbsp;</S.NavItemText>
                 <EnvelopeIcon color={colors.black} width={24} height={24} />
               </Container>
             </Link>
