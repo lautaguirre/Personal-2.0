@@ -1,42 +1,48 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import Link from "next/link";
+import {
+  ExclamationTriangleIcon,
+  ArrowLeftCircleIcon,
+} from "@heroicons/react/24/solid";
+import { Container } from "@/components/common/Container/Container";
+import { Text } from "@/components/common/Text/Text";
 
-const ContentRow = styled.div`
-  min-height: calc(100vh - 56px);
-`;
-
-const BackLink = styled.span`
-  color: black;
+const Content = styled.div`
+  min-height: calc(100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default function NotFound() {
+  const { colors } = useTheme();
+
   return (
-    <div>
-      <ContentRow>
-        <div>
-          <div>
-            <div>
-              <h1>Oops! Wrong URL</h1>
-              <div>
-                {/* <FontAwesomeIcon
-                  icon={faExclamationCircle}
-                  size="5x"
-                  color="black"
-                /> */}
-              </div>
-              <Link href="/">
-                {/* <FontAwesomeIcon
-                  icon={faArrowCircleLeft}
-                  className="mr-2"
-                  color="black"
-                /> */}
-                <BackLink>Go to index</BackLink>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </ContentRow>
-    </div>
+    <Content>
+      <Container
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+      >
+        <ExclamationTriangleIcon color={colors.black} width={72} height={72} />
+        <Text font="bold" fontSize={32}>
+          Oops! Wrong URL
+        </Text>
+        <Link href="/">
+          <Container display="flex" mt="20px">
+            <Container mr="10px" display="flex" alignItems="center">
+              <ArrowLeftCircleIcon
+                width={24}
+                height={24}
+                color={colors.black}
+              />
+            </Container>
+            <Text>Go back</Text>
+          </Container>
+        </Link>
+      </Container>
+    </Content>
   );
 }

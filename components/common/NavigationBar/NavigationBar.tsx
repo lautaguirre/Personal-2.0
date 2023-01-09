@@ -8,7 +8,6 @@ import {
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { Text } from "@/components/common/Text/Text";
 import { Container } from "@/components/common/Container/Container";
 
 import * as S from "./Styled";

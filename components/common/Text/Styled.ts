@@ -1,6 +1,7 @@
 import { css, DefaultTheme } from "styled-components";
 
 export const textMixin = css<{
+  fontSize?: number;
   textColor?: keyof DefaultTheme["colors"];
   font?: keyof DefaultTheme["fonts"];
   textDecoration?: React.CSSProperties["textDecoration"];
@@ -10,4 +11,5 @@ export const textMixin = css<{
   color: ${({ theme, textColor }) =>
     textColor ? theme.colors[textColor] : theme.colors.darkerGrey};
   text-decoration: ${({ textDecoration }) => textDecoration ?? "initial"};
+  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "16px")};
 `;
