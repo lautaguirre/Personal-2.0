@@ -1,3 +1,11 @@
 import { AppState } from "@/state/store";
+import { createSelector } from "@reduxjs/toolkit";
 
-export const getAuth = (state: AppState) => state.auth;
+const selectSelf = (state: AppState) => state.auth;
+
+export const getLoginFetching = createSelector(
+  selectSelf,
+  (state) => state.loginFetching
+);
+
+export const getProfile = createSelector(selectSelf, (state) => state.profile);

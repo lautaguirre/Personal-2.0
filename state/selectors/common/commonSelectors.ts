@@ -1,3 +1,6 @@
 import { AppState } from "@/state/store";
+import { createSelector } from "@reduxjs/toolkit";
 
-export const getLoading = (state: AppState) => state.common.loading;
+const selectSelf = (state: AppState) => state.common;
+
+export const getLoading = createSelector(selectSelf, (state) => state.loading);

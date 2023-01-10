@@ -1,22 +1,18 @@
 import { AppState } from "@/state/store";
+import { createSelector } from "@reduxjs/toolkit";
 
-export const getDashboard = (state: AppState) => {
-  return state.dashboard;
-};
+const selectSelf = (state: AppState) => state.dashboard;
 
-export const getLanguages = (state: AppState) => {
-  return state.dashboard.languages;
-};
+export const getLanguages = createSelector(
+  selectSelf,
+  (state) => state.languages
+);
 
-export const getAbout = (state: AppState) => {
-  return state.dashboard.about;
-};
+export const getAbout = createSelector(selectSelf, (state) => state.about);
 
-export const getPortfolio = (state: AppState) => {
-  return state.dashboard.portfolio;
-};
+export const getPortfolio = createSelector(
+  selectSelf,
+  (state) => state.portfolio
+);
 
-export const getSkills = (state: AppState) => {
-  return state.dashboard.skills;
-};
-
+export const getSkills = createSelector(selectSelf, (state) => state.skills);
