@@ -60,7 +60,7 @@ export const Ellipsis = styled.div`
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background: #fff;
+    background: ${({ theme }) => theme.colors.white};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
 

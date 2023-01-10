@@ -12,6 +12,7 @@ import { theme } from "@/styles/theme";
 // Replace toastify for radix ui primitive
 // Replace font awesome for hero icons
 // Implement final form instead for redux-form
+// Add i18n
 
 const AppContainer = styled.div`
   color: ${({ theme }) => theme.colors.darkerGrey};
