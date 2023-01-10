@@ -18,7 +18,7 @@ export const BackgroundImage: FC<Props> = (props) => {
       cover={props.cover}
     >
       {props.showBox && (
-        <S.BackgroundContent>
+        <S.BackgroundContent cover={props.cover}>
           <S.BackgroundBox>{props.boxText.toUpperCase()}</S.BackgroundBox>
         </S.BackgroundContent>
       )}

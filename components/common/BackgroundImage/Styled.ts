@@ -17,11 +17,14 @@ export const BackgroundImage = styled.div<{ cover?: boolean; url: string }>`
   ${({ url }) => `background-image: url(${url});`}
 `;
 
-export const BackgroundContent = styled.div`
+export const BackgroundContent = styled.div<{ cover?: boolean }>`
   position: absolute;
   margin: 0px 20px;
   background-color: ${({ theme }) => theme.colors.black};
   padding: 12px 24px;
+
+  ${({ cover, theme }) =>
+    cover && `margin-top: ${theme.constants.navBarHeight}`}
 `;
 
 export const BackgroundBox = styled.span`

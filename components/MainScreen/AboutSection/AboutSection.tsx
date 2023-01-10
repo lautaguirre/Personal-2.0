@@ -4,6 +4,9 @@ import { About } from "@/types/about";
 import { useAppSelector } from "@/lib/hooks/useAppSelector";
 import { getAbout } from "@/state/selectors/dashboard/dashboardSelectors";
 import { Container } from "@/components/common/Container/Container";
+import { Text } from "@/components/common/Text/Text";
+
+import * as S from "./Styled";
 
 import avatar from "@/assets/images/avatar.png";
 
@@ -49,24 +52,20 @@ export const AboutSection = () => {
   };
 
   return (
-    <Container>
-      <div id="about">
-        <div>
-          <div className="center">
-            <h2 className="title">About</h2>
-          </div>
-        </div>
+    <Container id="about" pl="50px" pr="50px">
+      <Container display="flex" justifyContent="center" mb="10px">
+        <Text font="bold" as="h1">
+          About
+        </Text>
+      </Container>
 
-        <div>
-          <Container hideOnMobile mb={30}>
-            <Image width={165} height={165} src={avatar.src} alt="avatar" />
-          </Container>
-        </div>
+      <Container hideOnMobile mb="30px" display="flex" justifyContent="center">
+        <S.Avatar width={165} height={165} src={avatar.src} alt="avatar" />
+      </Container>
 
+      <div>
         <div>
-          <div>
-            <div>{about.map(renderAboutList)}</div>
-          </div>
+          <div>{about.map(renderAboutList)}</div>
         </div>
       </div>
     </Container>

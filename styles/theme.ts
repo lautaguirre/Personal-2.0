@@ -40,9 +40,6 @@ export const theme: DefaultTheme = {
     breakDesktopMinimum: "1024px",
     breakDesktopDesktop: "1280px",
   },
-  spacing: {
-    formPaddingHorizontal: "40px",
-  },
   fonts: {
     bold: boldFont.style.fontFamily,
     demi: demiFont.style.fontFamily,

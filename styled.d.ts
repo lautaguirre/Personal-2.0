@@ -33,9 +33,6 @@ declare module "styled-components" {
       breakDesktopMinimum: string;
       breakDesktopDesktop: string;
     };
-    spacing: {
-      formPaddingHorizontal: string;
-    };
     fonts: {
       bold: string;
       demi: string;

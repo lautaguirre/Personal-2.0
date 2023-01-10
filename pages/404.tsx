@@ -27,7 +27,7 @@ export default function NotFound() {
         flexDirection="column"
       >
         <ExclamationTriangleIcon color={colors.black} width={72} height={72} />
-        <Text font="bold" fontSize={32}>
+        <Text as="h1" font="bold">
           Oops! Wrong URL
         </Text>
         <Link href="/">
