@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Container } from "@/components/common/Container/Container";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { Text } from "../Text/Text";
 
