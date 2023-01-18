@@ -30,7 +30,7 @@ export const AboutSection = () => {
 
           <Container pt="8px">
             <Container mb="2px">
-              <Text as="h4" font="demi" textColor="darkGrey">
+              <Text as="h4" font="bold" textColor="darkerGrey">
                 {sectionItem.itemHeader}
               </Text>
             </Container>

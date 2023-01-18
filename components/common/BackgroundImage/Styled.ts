@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const BackgroundImage = styled.div<{ cover?: boolean; url: string }>`
   margin-bottom: 25px;
@@ -17,11 +17,27 @@ export const BackgroundImage = styled.div<{ cover?: boolean; url: string }>`
   ${({ url }) => `background-image: url(${url});`}
 `;
 
+const fadeInBottom = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1
+  }
+`;
+
 export const BackgroundContent = styled.div`
   position: absolute;
   margin: 0px 20px;
   background-color: ${({ theme }) => theme.colors.black};
   padding: 12px 24px;
+
+  animation-delay: 500ms;
+  animation-duration: 1000ms;
+  animation-fill-mode: both;
+  animation-name: ${fadeInBottom};
 `;
 
 export const BackgroundBox = styled.span`

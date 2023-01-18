@@ -5,6 +5,7 @@ export const Avatar = styled(Image)`
   border-radius: 50px;
   transition-duration: 200ms;
   transition-property: transform;
+  transition-timing-function: ease-in-out;
 
   &:hover {
     transform: rotate(10deg);
@@ -38,6 +39,7 @@ export const ListItemIcon = styled.span`
   padding: 6px;
   left: -${TIMELINE_HALF_SIZE}px;
 
+  transition-timing-function: ease-in-out;
   transition-duration: 200ms;
   transition-property: transform;
 `;
@@ -58,7 +60,7 @@ export const ListItem = styled.li`
 
   &:hover {
     ${ListItemIcon} {
-      transform: scale(110%);
+      transform: scale(1.2) rotate(-15deg);
     }
   }
 `;
