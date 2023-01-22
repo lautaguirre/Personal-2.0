@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
 
       &::-webkit-scrollbar-thumb {
         background-color: ${({ theme }) => theme.colors.opacityGrey};
+        border-radius: 3px;
 
         &:hover {
           background-color: ${({ theme }) => theme.colors.darkerGrey};
