@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "styled-components";
 import * as Icons from "@heroicons/react/24/solid";
 import { AboutItem } from "@/types/about";
 import { useAppSelector } from "@/lib/hooks/useAppSelector";
@@ -6,11 +7,11 @@ import { getAbout } from "@/state/selectors/dashboard/dashboardSelectors";
 import { Container } from "@/components/common/Container/Container";
 import { Text } from "@/components/common/Text/Text";
 import { Separator } from "@/components/common/Separator/Separator";
+import { SectionHeader } from "@/components/common/SectionHeader/SectionHeader";
+import { SectionContainer } from "@/components/common/SectionContainer/SectionContainer";
+import avatar from "@/assets/images/avatar.png";
 
 import * as S from "./Styled";
-
-import avatar from "@/assets/images/avatar.png";
-import { useTheme } from "styled-components";
 
 export const AboutSection = () => {
   const about = useAppSelector(getAbout);
@@ -42,12 +43,8 @@ export const AboutSection = () => {
   };
 
   return (
-    <S.Wrapper id="about">
-      <Container display="flex" justifyContent="center" mb="10px">
-        <Text font="bold" as="h1">
-          About
-        </Text>
-      </Container>
+    <SectionContainer id="about">
+      <SectionHeader title="About" />
 
       <Container hideOnMobile mb="30px" display="flex" justifyContent="center">
         <S.Avatar width={165} height={165} src={avatar.src} alt="avatar" />
@@ -76,6 +73,6 @@ export const AboutSection = () => {
           );
         })}
       </Container>
-    </S.Wrapper>
+    </SectionContainer>
   );
 };

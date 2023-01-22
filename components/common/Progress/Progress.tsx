@@ -10,18 +10,14 @@ export const Progress = ({ percentage }: Props) => {
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(percentage), 500);
+    const timer = setTimeout(() => setProgress(percentage), 600);
 
     return () => clearTimeout(timer);
   }, [percentage]);
 
   return (
-    <>
-      <S.ProgressRoot value={percentage}>
-        <S.ProgressIndicator
-          style={{ transform: `translateX(-${100 - progress}%)` }}
-        />
-      </S.ProgressRoot>
-    </>
+    <S.ProgressRoot value={percentage}>
+      <S.ProgressIndicator progress={progress} />
+    </S.ProgressRoot>
   );
 };
