@@ -9,10 +9,17 @@ import { Progress } from "@/components/common/Progress/Progress";
 import { SectionHeader } from "@/components/common/SectionHeader/SectionHeader";
 import { SectionContainer } from "@/components/common/SectionContainer/SectionContainer";
 import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
+import orderBy from "lodash/orderBy";
 
 export const LanguagesSection = () => {
   const languages = useAppSelector(getLanguages);
   const { colors } = useTheme();
+
+  const sortedLanguages = orderBy(
+    languages,
+    ["percentage", "name"] as (keyof Language)[],
+    ["desc", "asc"]
+  );
 
   const renderLanguages = (language: Language) => {
     return (
@@ -38,7 +45,7 @@ export const LanguagesSection = () => {
     <SectionContainer id="languages">
       <SectionHeader title="Languages" />
 
-      <Container>{languages.map(renderLanguages)}</Container>
+      <Container>{sortedLanguages.map(renderLanguages)}</Container>
     </SectionContainer>
   );
 };
