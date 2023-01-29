@@ -5,7 +5,7 @@ import { AlignCenterMixin } from "@/styles/mixins";
 
 export const Content = styled(Container)`
   background-color: ${({ theme }) => theme.colors.darkerGrey};
-  height: 20vh;
+  padding: 48px 0px;
 `;
 
 export const ScrollLink = styled(Link)`
@@ -14,6 +14,7 @@ export const ScrollLink = styled(Link)`
   border-radius: 50%;
   height: 45px;
   width: 45px;
+  margin-top: 16px;
 
   ${AlignCenterMixin}
 
