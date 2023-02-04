@@ -26,9 +26,9 @@ export const ProgrammingSection = () => {
     });
 
     return (
-      <Container key={data._id}>
+      <Container key={data._id} mb="32px">
         <SectionHeader key={data._id} title={data.name} />
-        <Container display="flex">{renderList}</Container>
+        <S.ListContainer>{renderList}</S.ListContainer>
       </Container>
     );
   };

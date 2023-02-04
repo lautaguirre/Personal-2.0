@@ -7,8 +7,10 @@ import { Container } from "@/components/common/Container/Container";
 import * as S from "./Styled";
 
 export const ContactSection = () => {
+  // TODO: add Github
+
   return (
-    <SectionContainer id="languages" mb="86px" mt="86px">
+    <SectionContainer id="languages">
       <SectionHeader title="Send me a message!" />
 
       <Container display="flex" justifyContent="center" mt="32px">

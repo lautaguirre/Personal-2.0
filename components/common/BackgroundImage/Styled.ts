@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 export const BackgroundImage = styled.div<{ cover?: boolean; url: string }>`
-  margin-bottom: 25px;
+  margin-bottom: 64px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

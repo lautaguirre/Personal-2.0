@@ -42,7 +42,7 @@ export const LanguagesSection = () => {
   };
 
   return (
-    <SectionContainer id="languages" mb="64px">
+    <SectionContainer id="languages">
       <SectionHeader title="Languages" />
 
       <Container>{sortedLanguages.map(renderLanguages)}</Container>
