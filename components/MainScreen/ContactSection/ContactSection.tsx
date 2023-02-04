@@ -1,25 +1,25 @@
 import React from "react";
-import { Text } from "@/components/common/Text/Text";
+import { LinkedInIcon } from "@/assets/svgs/LinkedInIcon";
+import { SectionContainer } from "@/components/common/SectionContainer/SectionContainer";
+import { SectionHeader } from "@/components/common/SectionHeader/SectionHeader";
+import { Container } from "@/components/common/Container/Container";
 
 import * as S from "./Styled";
 
 export const ContactSection = () => {
   return (
-    <S.Content
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      flexDirection="column"
-    >
-      <Text as="h2">Send me a message</Text>
+    <SectionContainer id="languages" mb="32px">
+      <SectionHeader title="Send me a message" />
 
-      <S.ExternalLink
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.linkedin.com/in/lautaguirre"
-      >
-        {/* <FontAwesomeIcon icon={faLinkedin} size="5x" /> */}
-      </S.ExternalLink>
-    </S.Content>
+      <Container>
+        <S.ExternalLink
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/lautaguirre"
+        >
+          <LinkedInIcon size={86} />
+        </S.ExternalLink>
+      </Container>
+    </SectionContainer>
   );
 };
