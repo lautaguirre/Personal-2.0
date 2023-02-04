@@ -5,51 +5,37 @@ import { useAppSelector } from "@/lib/hooks/useAppSelector";
 import { getSkills } from "@/state/selectors/dashboard/dashboardSelectors";
 import { Text } from "@/components/common/Text/Text";
 import { Container } from "@/components/common/Container/Container";
+import { SectionContainer } from "@/components/common/SectionContainer/SectionContainer";
+import { SectionHeader } from "@/components/common/SectionHeader/SectionHeader";
+
+import * as S from "./Styled";
 
 export const ProgrammingSection = () => {
   const skills = useAppSelector(getSkills);
 
   const renderProgramming = (data: Skill) => {
     const renderList = data.content.map((item) => {
-      if (item.type === "icon") {
-        return (
-          <div key={item._id}>
-            {/* <FontAwesomeIcon
-              icon={
-                icons[
-                  item.asset as keyof typeof icons
-                ] as FontAwesomeIconProps["icon"]
-              }
-              size="5x"
-            /> */}
-            <Text as="h4">{item.description}</Text>
-          </div>
-        );
-      } else if (item.type === "image") {
-        return (
-          <div key={item._id}>
-            <Image src={item.asset} alt="skill-image" height={80} width={80} />
-            <Text as="h4">{item.description}</Text>
-          </div>
-        );
-      }
+      if (item.type === "icon") return null;
 
-      return null;
+      return (
+        <S.SkillContentContainer key={item._id}>
+          <Image src={item.asset} alt="skill-image" height={80} width={80} />
+          <Text as="h4">{item.description}</Text>
+        </S.SkillContentContainer>
+      );
     });
 
     return (
-      <div key={data._id}>
-        <div>
-          <div>
-            <Text as="h2">{data.name}</Text>
-          </div>
-        </div>
-        <div>{renderList}</div>
-      </div>
+      <Container key={data._id}>
+        <SectionHeader key={data._id} title={data.name} />
+        <Container display="flex">{renderList}</Container>
+      </Container>
     );
   };
 
   return (
-    <Container id="programming">{skills.map(renderProgramming)}</Container>
+    <SectionContainer id="programming">
+      {skills.map(renderProgramming)}
+    </SectionContainer>
   );
 };
