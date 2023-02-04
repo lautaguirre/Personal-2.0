@@ -4,7 +4,7 @@ import { useTheme } from "styled-components";
 import {
   CommandLineIcon,
   IdentificationIcon,
-  PhotoIcon,
+  WrenchScrewdriverIcon,
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
@@ -49,10 +49,14 @@ const NavigationBar = () => {
 
         <NavigationMenu.Item>
           <S.NavigationMenuLink asChild>
-            <Link href="/#portfolio" scroll={false}>
+            <Link href="/#tech" scroll={false}>
               <Container display="flex" alignItems="center" height="100%">
-                <S.NavItemText>Portfolio&nbsp;</S.NavItemText>
-                <PhotoIcon color={colors.black} width={24} height={24} />
+                <S.NavItemText>Tech&nbsp;</S.NavItemText>
+                <WrenchScrewdriverIcon
+                  color={colors.black}
+                  width={24}
+                  height={24}
+                />
               </Container>
             </Link>
           </S.NavigationMenuLink>

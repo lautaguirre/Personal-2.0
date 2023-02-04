@@ -5,7 +5,6 @@ import { BackgroundImage } from "@/components/common/BackgroundImage/BackgroundI
 import { AboutSection } from "@/components/MainScreen/AboutSection/AboutSection";
 import { LanguagesSection } from "@/components/MainScreen/LanguagesSection/LanguagesSection";
 import { ProgrammingSection } from "@/components/MainScreen/ProgramingSection/ProgrammingSection";
-import { PortfolioSection } from "@/components/MainScreen/PortfolioSection/PortfolioSection";
 import { ContactSection } from "@/components/MainScreen/ContactSection/ContactSection";
 import { Footer } from "@/components/MainScreen/Footer/Footer";
 
@@ -34,16 +33,14 @@ const Main = () => {
 
         <LanguagesSection />
 
-        <ProgrammingSection />
-
         <BackgroundImage
           image={mainImageTwo.src}
           showBox
-          boxText={"Portfolio"}
-          sectionName={"portfolio"}
+          boxText={"Tech"}
+          sectionName={"tech"}
         />
 
-        <PortfolioSection />
+        <ProgrammingSection />
 
         <BackgroundImage
           image={mainImageThree.src}
@@ -66,7 +63,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
       await Promise.all([
         dispatch(dashboardActions.fetchAbout()),
         dispatch(dashboardActions.fetchLanguages()),
-        dispatch(dashboardActions.fetchPortfolio()),
         dispatch(dashboardActions.fetchSkills()),
       ]);
 

@@ -3,24 +3,19 @@ import { RequestError } from "@/state/types";
 import { About, AboutItem } from "@/types/about";
 import axios from "@/lib/api";
 import { Language } from "@/types/languages";
-import { Portfolio } from "@/types/portfolio";
 import { Skill, SkillContent } from "@/types/skills";
 import {
   CREATE_DASHBOARD_ABOUT_ITEM,
   CREATE_DASHBOARD_LANGUAGE_ITEM,
-  CREATE_DASHBOARD_PORTFOLIO_ITEM,
   CREATE_DASHBOARD_SKILL_ITEM,
   DELETE_DASHBOARD_ABOUT_ITEM,
   DELETE_DASHBOARD_LANGUAGE_ITEM,
-  DELETE_DASHBOARD_PORTFOLIO_ITEM,
   DELETE_DASHBOARD_SKILL_ITEM,
   EDIT_DASHBOARD_ABOUT_ITEM,
   EDIT_DASHBOARD_LANGUAGE_ITEM,
-  EDIT_DASHBOARD_PORTFOLIO_ITEM,
   EDIT_DASHBOARD_SKILL_ITEM,
   SET_DASHBOARD_ABOUT,
   SET_DASHBOARD_LANGUAGES,
-  SET_DASHBOARD_PORTFOLIO,
   SET_DASHBOARD_SKILLS,
 } from "@/state/reducers/dashboard/dashboardReducer";
 import { SET_COMMON_LOADING } from "@/state/reducers/common/commonReducer";
@@ -231,139 +226,6 @@ export const createLanguage = (
       const error = e as RequestError;
       dispatch(SET_COMMON_LOADING(false));
       let errorMessage = "Unable to create language item";
-      if (error.response && error.response.data && error.response.data.error) {
-        errorMessage = error.response.data.error;
-      }
-
-      // toast.error(errorMessage);
-    }
-  };
-};
-
-// PORTFOLIO
-
-type FetchPortfolioResponse = {
-  portfolio: Portfolio[];
-};
-
-export const fetchPortfolio = (): AppThunk => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.get<FetchPortfolioResponse>(
-        "information/portfolio"
-      );
-
-      dispatch(SET_DASHBOARD_PORTFOLIO(data.portfolio));
-    } catch (e) {
-      const error = e as RequestError;
-      let errorMessage = "Unable to get the portfolio information";
-      if (error.response && error.response.data && error.response.data.error) {
-        errorMessage = error.response.data.error;
-      }
-
-      // toast.error(errorMessage);
-    }
-  };
-};
-
-export const deletePortfolio = (_id: string): AppThunk => {
-  return async (dispatch) => {
-    try {
-      dispatch(SET_COMMON_LOADING(true));
-
-      await axios.delete(`information/portfolio/${_id}`);
-
-      dispatch(DELETE_DASHBOARD_PORTFOLIO_ITEM({ _id }));
-      dispatch(SET_COMMON_LOADING(false));
-    } catch (e) {
-      const error = e as RequestError;
-      dispatch(SET_COMMON_LOADING(false));
-      let errorMessage = "Unable to delete portfolio item";
-      if (error.response && error.response.data && error.response.data.error) {
-        errorMessage = error.response.data.error;
-      }
-
-      // toast.error(errorMessage);
-    }
-  };
-};
-
-type EditPortfolioResponse = Portfolio;
-
-export const editPortfolio = (
-  payload: Portfolio[],
-  _id: string,
-  callback: () => void
-): AppThunk => {
-  return async (dispatch) => {
-    const formData = new FormData();
-    for (const dataItem in payload) {
-      if (Array.isArray(payload[dataItem])) {
-        payload[dataItem].forEach((element) => {
-          formData.append(dataItem, element);
-        });
-      } else {
-        formData.append(dataItem, payload[dataItem]);
-      }
-    }
-
-    try {
-      dispatch(SET_COMMON_LOADING(true));
-
-      const { data } = await axios.patch<EditPortfolioResponse>(
-        `information/portfolio/${_id}`,
-        formData
-      );
-
-      dispatch(EDIT_DASHBOARD_PORTFOLIO_ITEM({ data: { ...data, _id } }));
-      dispatch(SET_COMMON_LOADING(false));
-      callback();
-    } catch (e) {
-      const error = e as RequestError;
-      dispatch(SET_COMMON_LOADING(false));
-      let errorMessage = "Unable to edit portfolio item";
-      if (error.response && error.response.data && error.response.data.error) {
-        errorMessage = error.response.data.error;
-      }
-
-      // toast.error(errorMessage);
-    }
-  };
-};
-
-type CreatePortfolioResponse = Portfolio;
-
-export const createPortfolio = (
-  payload: Portfolio,
-  callback: () => void
-): AppThunk => {
-  return async (dispatch) => {
-    const formData = new FormData();
-    for (const dataItem in payload) {
-      if (Array.isArray(payload[dataItem])) {
-        payload[dataItem].forEach((element) => {
-          formData.append(dataItem, element);
-        });
-      } else {
-        formData.append(dataItem, payload[dataItem]);
-      }
-    }
-
-    try {
-      dispatch(SET_COMMON_LOADING(true));
-
-      const { data } = await axios.post<CreatePortfolioResponse>(
-        `information/portfolio`,
-        formData
-      );
-
-      dispatch(CREATE_DASHBOARD_PORTFOLIO_ITEM({ data }));
-      dispatch(SET_COMMON_LOADING(false));
-      callback();
-    } catch (e) {
-      const error = e as RequestError;
-      dispatch(SET_COMMON_LOADING(false));
-      let errorMessage = "Unable to create portfolio item";
       if (error.response && error.response.data && error.response.data.error) {
         errorMessage = error.response.data.error;
       }

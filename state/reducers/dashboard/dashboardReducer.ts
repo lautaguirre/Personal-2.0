@@ -2,7 +2,6 @@ import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { About, AboutItem } from "@/types/about";
 import { DASHBOARD_ACTIONS } from "../../actions/dashboard/types";
 import { Language } from "@/types/languages";
-import { Portfolio } from "@/types/portfolio";
 import { Skill, SkillContent } from "@/types/skills";
 import { HYDRATE } from "next-redux-wrapper";
 
@@ -11,14 +10,12 @@ const hydrate = createAction<{ dashboard: State }>(HYDRATE);
 interface State {
   about: About[];
   languages: Language[];
-  portfolio: Portfolio[];
   skills: Skill[];
 }
 
 const initialState: State = {
   about: [],
   languages: [],
-  portfolio: [],
   skills: [],
 };
 
@@ -120,40 +117,6 @@ export const dashboardSlice = createSlice({
       state.languages.push(action.payload.data);
     },
 
-    // Portfolio
-    [DASHBOARD_ACTIONS.SET_DASHBOARD_PORTFOLIO]: (
-      state,
-      action: PayloadAction<Portfolio[]>
-    ) => {
-      state.portfolio = action.payload;
-    },
-    [DASHBOARD_ACTIONS.DELETE_DASHBOARD_PORTFOLIO_ITEM]: (
-      state,
-      action: PayloadAction<{ _id: string }>
-    ) => {
-      state.portfolio = state.portfolio.filter(
-        (portfolio) => portfolio._id !== action.payload._id
-      );
-    },
-    [DASHBOARD_ACTIONS.EDIT_DASHBOARD_PORTFOLIO_ITEM]: (
-      state,
-      action: PayloadAction<{ data: Portfolio }>
-    ) => {
-      state.portfolio = state.portfolio.map((portfolio) => {
-        if (portfolio._id === action.payload.data._id) {
-          return action.payload.data;
-        }
-
-        return portfolio;
-      });
-    },
-    [DASHBOARD_ACTIONS.CREATE_DASHBOARD_PORTFOLIO_ITEM]: (
-      state,
-      action: PayloadAction<{ data: Portfolio }>
-    ) => {
-      state.portfolio.push(action.payload.data);
-    },
-
     // Skills
     [DASHBOARD_ACTIONS.SET_DASHBOARD_SKILLS]: (
       state,
@@ -224,19 +187,15 @@ export const dashboardSlice = createSlice({
 export const {
   CREATE_DASHBOARD_ABOUT_ITEM,
   CREATE_DASHBOARD_LANGUAGE_ITEM,
-  CREATE_DASHBOARD_PORTFOLIO_ITEM,
   CREATE_DASHBOARD_SKILL_ITEM,
   DELETE_DASHBOARD_ABOUT_ITEM,
   DELETE_DASHBOARD_LANGUAGE_ITEM,
-  DELETE_DASHBOARD_PORTFOLIO_ITEM,
   DELETE_DASHBOARD_SKILL_ITEM,
   EDIT_DASHBOARD_ABOUT_ITEM,
   EDIT_DASHBOARD_LANGUAGE_ITEM,
-  EDIT_DASHBOARD_PORTFOLIO_ITEM,
   EDIT_DASHBOARD_SKILL_ITEM,
   SET_DASHBOARD_ABOUT,
   SET_DASHBOARD_LANGUAGES,
-  SET_DASHBOARD_PORTFOLIO,
   SET_DASHBOARD_SKILLS,
 } = dashboardSlice.actions;
 

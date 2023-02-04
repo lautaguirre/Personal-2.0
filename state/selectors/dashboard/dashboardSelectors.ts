@@ -10,9 +10,4 @@ export const getLanguages = createSelector(
 
 export const getAbout = createSelector(selectSelf, (state) => state.about);
 
-export const getPortfolio = createSelector(
-  selectSelf,
-  (state) => state.portfolio
-);
-
 export const getSkills = createSelector(selectSelf, (state) => state.skills);
