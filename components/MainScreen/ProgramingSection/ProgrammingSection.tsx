@@ -15,18 +15,18 @@ export const ProgrammingSection = () => {
 
   const renderProgramming = (data: Skill) => {
     const renderList = data.content.map((item) => {
-      if (item.type === "icon") return null;
-
       return (
         <S.SkillContentContainer key={item._id}>
           <Image src={item.asset} alt="skill-image" height={80} width={80} />
-          <Text as="h4">{item.description}</Text>
+          <Container mt="4px">
+            <Text as="h4">{item.description}</Text>
+          </Container>
         </S.SkillContentContainer>
       );
     });
 
     return (
-      <Container key={data._id} mb="32px">
+      <Container key={data._id}>
         <SectionHeader key={data._id} title={data.name} />
         <S.ListContainer>{renderList}</S.ListContainer>
       </Container>

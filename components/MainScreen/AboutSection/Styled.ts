@@ -12,7 +12,7 @@ export const Avatar = styled(Image)`
   }
 `;
 
-const TIMELINE_SIZE = 36;
+const TIMELINE_SIZE = 32;
 const TIMELINE_HALF_SIZE = TIMELINE_SIZE / 2;
 
 export const Wrapper = styled.div`
@@ -31,7 +31,7 @@ export const List = styled.ol``;
 
 export const ListItemIcon = styled.span`
   position: absolute;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.charcoalGrey};
   border-radius: 999999px;
   display: flex;
   align-items: center;

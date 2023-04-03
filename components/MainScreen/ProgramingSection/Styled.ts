@@ -6,6 +6,7 @@ export const SkillContentContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 24px;
 `;
 
 export const ListContainer = styled.div`

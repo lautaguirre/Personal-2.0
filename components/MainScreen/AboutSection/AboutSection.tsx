@@ -23,9 +23,9 @@ export const AboutSection = () => {
         <S.ListItemContent>
           <S.ListItemIcon>
             <Icons.CalendarDaysIcon
-              color={colors.charcoalGrey}
-              width={24}
-              height={24}
+              color={colors.offWhite}
+              width={20}
+              height={20}
             />
           </S.ListItemIcon>
 
